@@ -6,6 +6,7 @@ public class VehicleStatus extends Status{
 
 	public int getRegisterVihicleId() {
 		return registerVihicleId;
+		
 	}
 
 	public void setRegisterVihicleId(int registerVihicleId) {
