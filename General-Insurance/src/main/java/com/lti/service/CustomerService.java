@@ -6,6 +6,7 @@ import java.util.Base64;
 import javax.persistence.NoResultException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,8 +39,8 @@ public class CustomerService {
 			Customer customer= customerRepository.find(Customer.class, id);
 			return customer;
 		}
-		catch(NoResultException e) {
-			throw new CustomerServiceException("Invalid Username/Password");
+		catch(EmptyResultDataAccessException e) {
+			throw new CustomerServiceException("Invalid Email/Password");
 		}
 	}
 }
