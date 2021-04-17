@@ -3,9 +3,11 @@ package com.lti.entity1;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -13,7 +15,8 @@ import javax.persistence.Table;
 public class Depreciation {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="my_sequence")
+	@SequenceGenerator(sequenceName="depreciation_seq", allocationSize=1, name="my_sequence")
 	private int id;
 	
 	@Column(name="vehicle_age")
