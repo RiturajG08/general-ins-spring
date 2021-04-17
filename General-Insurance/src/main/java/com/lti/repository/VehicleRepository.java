@@ -1,0 +1,17 @@
+package com.lti.repository;
+
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class VehicleRepository extends GenericRepository {
+
+	public boolean isVechiclePresent(String number) {
+		return (Long)
+				entityManager
+				.createQuery("select count(v.id) from Vehicle v where v.number= :num")
+				.setParameter("num", number)
+				.getSingleResult()== 1 ? true : false;
+	}
+}
+
+
