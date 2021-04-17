@@ -16,7 +16,7 @@ public class CustomerRepository extends GenericRepository {
 	public int fetchByEmailAndPassword(String email, String password) {
 		return (Integer)
 				entityManager
-				.createQuery("select c.id from customer c where c.email= : em and c.password= :pw")
+				.createQuery("select c.id from Customer c where c.email= : em and c.password= :pw")
 				.setParameter("em", email)
 				.setParameter("pw", password)
 				.getSingleResult();
