@@ -11,5 +11,6 @@ public class VehicleStatus extends Status{
 
 	public void setRegisterVihicleId(int registerVihicleId) {
 		this.registerVihicleId = registerVihicleId;
+		
 	}
 }
