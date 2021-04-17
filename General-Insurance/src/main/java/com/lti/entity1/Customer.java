@@ -115,12 +115,12 @@ public class Customer {
 	public void setPincode(int pincode) {
 		this.pincode = pincode;
 	}
-
+	
 	public double getMobileNumber() {
 		return mobileNumber;
 	}
 
-	public void setMobileNumber(int mobileNumber) {
+	public void setMobileNumber(double mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
 
