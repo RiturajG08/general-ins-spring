@@ -6,26 +6,26 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.lti.entity1.Customer;
+import com.lti.entity1.Vehicle;
+import com.lti.repository.CustomerRepository;
+import com.lti.repository.DepreciationRepository;
 import com.lti.repository.GenericRepository;
+import com.lti.service.DepreciationService;
 
 @SpringBootTest
 class GeneralInsuranceApplicationTests {
 
 	@Test
-	public void addCust() {
-		Customer cust= new Customer();
-		cust.setName("Harshit");
-		cust.setEmail("harshit@gmail.com");
-		cust.setPassword("Harshit123");
-		cust.setDateOfBirth(LocalDate.of(1998, 12, 12));
-		cust.setAddress("Talao-Pali");
-		cust.setCity("Thane");
-		cust.setState("Maharashtra");
-		cust.setPincode(421301);
-		cust.setMobileNumber(1234678);
-		
-		GenericRepository repo= new GenericRepository();
-		repo.save(cust);
+	public void addGetVehicleAge() {
+		DepreciationService sc= new DepreciationService();
+		System.out.println(sc.getPriceOfVehilce(2001));
+	}
+	
+	@Test
+	public void getCustomer() {
+		CustomerRepository repo= new CustomerRepository();
+		int sc = repo.fetchByEmailAndPassword("anand@gmail.com", "123");
+		System.out.println(sc);
 	}
 
 }
