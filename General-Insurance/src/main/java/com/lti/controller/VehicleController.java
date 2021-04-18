@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lti.dto.RegisterStatus;
 import com.lti.dto.VehicleDto;
 import com.lti.dto.VehicleStatus;
 import com.lti.entity1.Customer;
@@ -38,14 +39,14 @@ public class VehicleController {
 			
 			Customer customer= vehicleService.findById(vehicleDto.getCustomerId());
 			vehicle.setCustomer(customer);
-			vehicleService.register(vehicle);
+			vehicleService.register(vehicle); 
 			
-			int id= vehicleService.register(vehicle);
+			int id= vehicleService.register(vehicle); 
 			
 			VehicleStatus status= new VehicleStatus();
 			status.setStatus(true);
 			status.setMessage("Registration Successfull");
-			status.setRegisterVihicleId(id);;
+			status.setRegisterVihicleId(id);
 			return status;
 		}
 		catch(VehicleServiceException e) {
