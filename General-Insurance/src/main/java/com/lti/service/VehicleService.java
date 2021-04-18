@@ -20,13 +20,9 @@ public class VehicleService {
 		if(vehicleRepository.isVechiclePresent(vehicle.getNumber())) {
 			throw new VehicleServiceException("vehicle already registered !");
 		}
-		else {
 			Vehicle updatedVehicle= (Vehicle) vehicleRepository.save(vehicle);
 			return updatedVehicle.getId();
 		}
 	}
 	
-	public Customer findById(int id) {
-		return vehicleRepository.findById(id);
-	}
-}
+

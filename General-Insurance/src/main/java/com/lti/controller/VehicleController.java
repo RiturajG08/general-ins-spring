@@ -22,26 +22,10 @@ public class VehicleController {
 	private VehicleService vehicleService;
 	
 	@PostMapping("/vehicle")
-	public VehicleStatus register(@RequestBody VehicleDto vehicleDto ) {
+	public VehicleStatus register(@RequestBody Vehicle vehicle ) {
 		try {
 			
-			Vehicle vehicle= new Vehicle();
-			vehicle.setType(vehicleDto.getType());
-			vehicle.setNumber(vehicleDto.getNumber());
-			vehicle.setPrice(vehicleDto.getPrice());
-			vehicle.setEngineNumber(vehicleDto.getEngineNumber());
-			vehicle.setRegistrationDate(vehicleDto.getRegistrationDate());
-			vehicle.setDrivingLicense(vehicleDto.getDrivingLicense());
-			vehicle.setChassisNumber(vehicleDto.getChassisNumber());
-			vehicle.setModel(vehicleDto.getModel());
-			vehicle.setManufacturer(vehicleDto.getManufacturer());
-			
-			
-			Customer customer= vehicleService.findById(vehicleDto.getCustomerId());
-			vehicle.setCustomer(customer);
-			vehicleService.register(vehicle); 
-			
-			int id= vehicleService.register(vehicle); 
+			int id= vehicleService.register(vehicle);
 			
 			VehicleStatus status= new VehicleStatus();
 			status.setStatus(true);

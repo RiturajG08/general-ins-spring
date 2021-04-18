@@ -47,7 +47,7 @@ public class Vehicle {
 	private String model;
 	private String manufacturer;
 	
-	@ManyToOne(cascade= CascadeType.ALL, fetch =FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name="customer_id")
 	private Customer customer;
 
