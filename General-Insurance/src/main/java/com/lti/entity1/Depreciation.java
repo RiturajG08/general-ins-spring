@@ -20,13 +20,13 @@ public class Depreciation {
 	private int id;
 	
 	@Column(name="vehicle_age")
-	private int vehicleAge;
+	private long vehicleAge;
 	
 	@Column(name="depreciation_percentage")
 	private int percentage;
 	
 	@Column(name="depreciation_amount")
-	private int depreciationAmount;
+	private double depreciationAmount;
 	
 	@OneToOne
 	@JoinColumn(name="vehicle_id")
@@ -40,11 +40,11 @@ public class Depreciation {
 		this.id = id;
 	}
 
-	public int getVehicleAge() {
+	public long getVehicleAge() {
 		return vehicleAge;
 	}
 
-	public void setVehicleAge(int vehicleAge) {
+	public void setVehicleAge(long vehicleAge) {
 		this.vehicleAge = vehicleAge;
 	}
 
@@ -56,11 +56,11 @@ public class Depreciation {
 		this.percentage = percentage;
 	}
 
-	public int getDepreciationAmount() {
+	public double getDepreciationAmount() {
 		return depreciationAmount;
 	}
 
-	public void setDepreciationAmount(int depreciationAmount) {
+	public void setDepreciationAmount(double depreciationAmount) {
 		this.depreciationAmount = depreciationAmount;
 	}
 
