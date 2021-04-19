@@ -1,5 +1,7 @@
 package com.lti.service;
 
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,11 +17,14 @@ public class DepreciationService {
 
 	/*public int getPriceOfVehilce(int id) {
 		return depriciationRepo.fetchVehicleAge(id);
+	}*/
+	
+	public LocalDate getAgeOfVehicle(int id) {
+		return depriciationRepo.fetchVehicleAge(id);
+		
 	}
 	
-	public int getAgeOfVehicle(int id) {
-		return depriciationRepo.fetchVehicleAge(id);
-	}*/
+	
 	
 	
 }

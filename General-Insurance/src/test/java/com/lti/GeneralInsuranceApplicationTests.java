@@ -1,6 +1,7 @@
 package com.lti;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,20 +17,31 @@ import com.lti.service.DepreciationService;
 @SpringBootTest
 class GeneralInsuranceApplicationTests {
 	
-	/*@Autowired
+	@Autowired
 	private DepreciationService ds;
 
-	@Test
+	/*@Test
 	public void addGetVehiclePrice() {
 		System.out.println("Price Of Vehicle is "+ds.getPriceOfVehilce(2001));	
-	}
+	}*/
 	
 	@Test
 	public void addGetVehicleAge() {
-		System.out.println("Age Of Vehicle is "+ds.getPriceOfVehilce(2001));	
-	}*/
+		LocalDate firstDate =LocalDate.now();
+		LocalDate secondDate = ds.getAgeOfVehicle(2002);
+		//System.out.println(Period.between(firstDate, secondDate))
+	}
 	
-	
+	/*
+	 * Date date1 = obj.parse(join_date);   
+            Date date2 = obj.parse(leave_date);   
+            // Calucalte time difference in milliseconds   
+            long time_difference = date2.getTime() - date1.getTime();  
+            // Calucalte time difference in days  
+            long days_difference = (time_difference / (1000*60*60*24)) % 365;   
+            // Calucalte time difference in years  
+            long years_difference = (time_difference / (1000l*60*60*24*365));
+	 */
 	
 	
 	@Test

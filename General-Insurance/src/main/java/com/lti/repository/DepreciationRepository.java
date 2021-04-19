@@ -16,14 +16,13 @@ public class DepreciationRepository extends GenericRepository {
 	}
 	
 	//select c from Customer c where EXTRACT(year from c.dateOfBirth)=:dt
-	/*public int fetchVehicleAge(int id, int registrationDate) {
-		return (Integer)
+	public LocalDate fetchVehicleAge(int id) {
+		return (LocalDate)
 				entityManager
-				.createQuery("select v from Vehicle v where EXTRACT(year from v.registrationDate) where v.id =:vid and v.registrationDate = :rd")
+				.createQuery("select v.registrationDate from Vehicle v where v.id= :vid")
 				.setParameter("vid", id)
-				.setParameter("rd", registrationDate)
 				.getSingleResult();
 		
 		
-	}*/
+	}
 }
