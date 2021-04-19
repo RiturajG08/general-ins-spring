@@ -20,15 +20,11 @@ public class VehicleService {
 	@Autowired
 	private CustomerRepository customerRepository;
 
-	public int register(Vehicle vehicle) {
+	public int addVehicle(Vehicle vehicle) {
 		if(vehicleRepository.isVechiclePresent(vehicle.getNumber())) {
 			throw new VehicleServiceException("vehicle already registered !");
 		}
-		 
-		Customer customer= (Customer) vehicleRepository.findById(1006);
 		Vehicle updatedVehicle= (Vehicle) vehicleRepository.save(vehicle);
-		updatedVehicle.setCustomer(customer);
-		vehicleRepository.save(updatedVehicle);
 		return updatedVehicle.getId();
 		}
 	}

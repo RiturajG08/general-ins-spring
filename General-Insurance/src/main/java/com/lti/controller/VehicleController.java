@@ -24,7 +24,7 @@ public class VehicleController {
 	public VehicleStatus register(@RequestBody Vehicle vehicle ) {
 		try {
 			
-			int id= vehicleService.register(vehicle);
+			int id= vehicleService.addVehicle(vehicle);
 			
 			VehicleStatus status= new VehicleStatus();
 			status.setStatus(true);
