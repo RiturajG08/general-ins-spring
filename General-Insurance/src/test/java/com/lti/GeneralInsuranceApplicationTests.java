@@ -16,13 +16,20 @@ import com.lti.service.DepreciationService;
 @SpringBootTest
 class GeneralInsuranceApplicationTests {
 	
-	@Autowired
+	/*@Autowired
 	private DepreciationService ds;
 
 	@Test
-	public void addGetVehicleAge() {
+	public void addGetVehiclePrice() {
 		System.out.println("Price Of Vehicle is "+ds.getPriceOfVehilce(2001));	
 	}
+	
+	@Test
+	public void addGetVehicleAge() {
+		System.out.println("Age Of Vehicle is "+ds.getPriceOfVehilce(2001));	
+	}*/
+	
+	
 	
 	
 	@Test

@@ -13,7 +13,13 @@ public class DepreciationService {
 	@Autowired
 	private DepreciationRepository depriciationRepo;
 
-	public int getPriceOfVehilce(int id) {
-		return depriciationRepo.getVhehiclePrice(id);
+	/*public int getPriceOfVehilce(int id) {
+		return depriciationRepo.fetchVehicleAge(id);
 	}
+	
+	public int getAgeOfVehicle(int id) {
+		return depriciationRepo.fetchVehicleAge(id);
+	}*/
+	
+	
 }

@@ -18,6 +18,8 @@ public class VehicleRepository extends GenericRepository {
 	public Customer findById(int id) {
 		return entityManager.find(Customer.class, id);
 	}
+	
+	
 }
 
 
