@@ -57,6 +57,7 @@ public class DepreciationService {
 		Depreciation addDep= (Depreciation) depriciationRepo.save(depreciation);
 		return addDep.getId();
 		}
+	
 	}
 	
 	
