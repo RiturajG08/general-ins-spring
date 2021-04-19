@@ -34,7 +34,8 @@ class GeneralInsuranceApplicationTests {
 	}
 	
 	/*
-	 * Date date1 = obj.parse(join_date);   
+	 * Date date1 = obj.parse(join_date); 
+	 *   
             Date date2 = obj.parse(leave_date);   
             // Calucalte time difference in milliseconds   
             long time_difference = date2.getTime() - date1.getTime();  
@@ -52,4 +53,6 @@ class GeneralInsuranceApplicationTests {
 		System.out.println(sc);
 	}
 
+	
+	
 }
