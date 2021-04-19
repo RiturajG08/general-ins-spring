@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.dto.RegisterStatus;
-import com.lti.dto.VehicleDto;
 import com.lti.dto.VehicleStatus;
 import com.lti.entity1.Customer;
 import com.lti.entity1.Vehicle;
