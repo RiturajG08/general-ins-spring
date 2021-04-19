@@ -33,17 +33,13 @@ class GeneralInsuranceApplicationTests {
 		System.out.println(Period.between(firstDate, secondDate));
 	}
 	
-	/*
-	 * Date date1 = obj.parse(join_date); 
-	 *   
-            Date date2 = obj.parse(leave_date);   
-            // Calucalte time difference in milliseconds   
-            long time_difference = date2.getTime() - date1.getTime();  
-            // Calucalte time difference in days  
-            long days_difference = (time_difference / (1000*60*60*24)) % 365;   
-            // Calucalte time difference in years  
-            long years_difference = (time_difference / (1000l*60*60*24*365));
-	 */
+	@Test
+	public void check() {
+		System.out.println(ds.getDepreciationAmount(500000, LocalDate.of(2020, 02, 15)));
+		//System.out.println("months between"+ds.addDepreciation(depreciation)
+	}
+	
+	
 	
 	
 	@Test

@@ -32,9 +32,11 @@ public class DepreciationService {
 		
 	}
 	
-	long noOfMonthsBetween=0;
+	
 	
 	public double getDepreciationAmount(int price, LocalDate registrationDate) {
+		long noOfMonthsBetween=0;
+		
 		DepreciationStatus ds = new DepreciationStatus();
 		LocalDate firstDate =LocalDate.now();
 		LocalDate secondDate = ds.getRegistrationDate();
@@ -57,7 +59,7 @@ public class DepreciationService {
 	public int addDepreciation(Depreciation depreciation) {
 		
 		Depreciation addDep= (Depreciation) depriciationRepo.save(depreciation);
-		addDep.setVehicleAge(noOfMonthsBetween);
+		//addDep.setVehicleAge(noOfMonthsBetween);
 	//	addDep.setDepreciationAmount(getDepreciationAmount(10000, LocalDate.of(2018, 9, 4)));
 		depriciationRepo.save(addDep);
 		return addDep.getId();
