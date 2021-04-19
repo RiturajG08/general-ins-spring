@@ -25,19 +25,19 @@ class GeneralInsuranceApplicationTests {
 		System.out.println("Price Of Vehicle is "+ds.getPriceOfVehilce(2001));	
 	}*/
 	
-	@Test
+	/*@Test
 	public void addGetVehicleAge() {
 		LocalDate firstDate =LocalDate.now();
 		LocalDate secondDate = ds.getAgeOfVehicle(2002);
 		//long time_difference = date2.getTime() - date1.getTime();  
 		System.out.println(Period.between(firstDate, secondDate));
-	}
+	}*/
 	
-	@Test
+	/*@Test
 	public void check() {
 		System.out.println(ds.getDepreciationAmount(500000, LocalDate.of(2020, 02, 15)));
 		//System.out.println("months between"+ds.addDepreciation(depreciation)
-	}
+	}*/
 	
 	
 	

@@ -27,7 +27,7 @@ public class DepreciationService {
 		return depriciationRepo.fetchVehicleAge(id);
 	}*/
 	
-	public LocalDate getAgeOfVehicle(int id) {
+	/*public LocalDate getAgeOfVehicle(int id) {
 		return depriciationRepo.fetchVehicleAge(id);
 		
 	}
@@ -63,9 +63,44 @@ public class DepreciationService {
 	//	addDep.setDepreciationAmount(getDepreciationAmount(10000, LocalDate.of(2018, 9, 4)));
 		depriciationRepo.save(addDep);
 		return addDep.getId();
-		}
+		}*/
 	
+	public Depreciation addDepreciationToVehicle(int id) {
+		int price= depriciationRepo.fetchVehiclePrice(id);
+		
+		LocalDate newDate= depriciationRepo.fetchVehicleAge(id);
+		LocalDate firstDate= LocalDate.now();
+		
+		long noOfMonthsBetween=0;
+		double depreciationPrice=0;
+		
+		noOfMonthsBetween = ChronoUnit.MONTHS.between(firstDate, newDate);
+		
+		if(noOfMonthsBetween <= 12) {
+			depreciationPrice= price*0.1;
+		}
+		else if(noOfMonthsBetween >12 && noOfMonthsBetween <=24) {
+			depreciationPrice= price*0.2;
+		}
+		else if(noOfMonthsBetween >24 && noOfMonthsBetween <=36) {
+			depreciationPrice= price*0.3;
+		}
+		else if(noOfMonthsBetween >36 && noOfMonthsBetween <=48) {
+			depreciationPrice= price*0.4;
+		}
+		else {
+			depreciationPrice= price*0.5;
+		}
+		
+		Depreciation depreciation= new Depreciation();
+		depreciation.setDepreciationAmount(depreciationPrice);
+		depreciation.setVehicleAge(noOfMonthsBetween/12);
+		
+		depriciationRepo.save(depreciation);
+		return depreciation;
 	}
+	
+}
 	
 	
 	

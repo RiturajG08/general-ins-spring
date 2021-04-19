@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class DepreciationRepository extends GenericRepository {
 
-	public int fetchVhehiclePrice(int id) {
+	public int fetchVehiclePrice(int id) {
 		return (Integer)
 				entityManager
 				.createQuery("select v.price from Vehicle v where v.id = :vid ")
@@ -15,7 +15,6 @@ public class DepreciationRepository extends GenericRepository {
 				.getSingleResult();
 	}
 	
-	//select c from Customer c where EXTRACT(year from c.dateOfBirth)=:dt
 	public LocalDate fetchVehicleAge(int id) {
 		return (LocalDate)
 				entityManager
@@ -25,4 +24,5 @@ public class DepreciationRepository extends GenericRepository {
 		
 		
 	}
+	
 }
