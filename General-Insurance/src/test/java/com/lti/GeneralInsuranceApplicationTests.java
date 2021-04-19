@@ -29,7 +29,8 @@ class GeneralInsuranceApplicationTests {
 	public void addGetVehicleAge() {
 		LocalDate firstDate =LocalDate.now();
 		LocalDate secondDate = ds.getAgeOfVehicle(2002);
-		//System.out.println(Period.between(firstDate, secondDate))
+		//long time_difference = date2.getTime() - date1.getTime();  
+		System.out.println(Period.between(firstDate, secondDate));
 	}
 	
 	/*
