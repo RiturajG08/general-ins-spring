@@ -23,7 +23,7 @@ public class DepreciationService {
 	@Autowired
 	private DepreciationRepository depriciationRepo;
 	
-	public Depreciation addDepreciationToVehicle(int id) {
+	public int addDepreciationToVehicle(int id) {
 		int price= depriciationRepo.fetchVehiclePrice(id);
 		
 		
@@ -73,9 +73,8 @@ public class DepreciationService {
 		//depreciation.setPercentage(depreciationPercentage);
 		depreciation.setIdv(idv);
 		depreciation.setVehicle(vehicle);
-		
-		depriciationRepo.save(depreciation);
-		return depreciation;
+		Depreciation updatedDepreciation= (Depreciation) depriciationRepo.save(depreciation);
+		return updatedDepreciation.getId();
 	}
 	
 }
