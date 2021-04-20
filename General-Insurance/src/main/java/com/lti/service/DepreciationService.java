@@ -26,6 +26,7 @@ public class DepreciationService {
 	public Depreciation addDepreciationToVehicle(int id) {
 		int price= depriciationRepo.fetchVehiclePrice(id);
 		
+		
 		LocalDate registrationDate= depriciationRepo.fetchVehicleAge(id);
 		LocalDate todayDate= LocalDate.now();
 		
