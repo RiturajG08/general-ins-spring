@@ -23,22 +23,6 @@ public class DepreciationController {
 	private DepreciationService depreciationService;
 	
 	@PostMapping("/depreciation")
-	/*public DepreciationStatus addDepreciation(@RequestBody Depreciation depreciation ) {
-		try {
-			int id= depreciationService.addDepreciation(depreciation);
-			DepreciationStatus status= new DepreciationStatus();
-			status.setStatus(true);
-			status.setMessage("depreciation added sucessfully!");
-			return status;
-		}
-		catch(CustomerServiceException e) {
-			DepreciationStatus status= new DepreciationStatus();
-			status.setStatus(false);
-			status.setMessage(e.getMessage());
-			return status;
-		}
-	
-	}*/
 	public DepreciationStatus addDepreciation(@RequestBody DepreciationDto depreciationDto ) {
 		try {
 			Depreciation depreciation= depreciationService.addDepreciationToVehicle(depreciationDto.getId());

@@ -15,11 +15,6 @@ public class VehicleRepository extends GenericRepository {
 				.getSingleResult()== 1 ? true : false;
 	}
 	
-	public Customer findById(int id) {
-		return entityManager.find(Customer.class, id);
-	}
-	
-	
 }
 
 
