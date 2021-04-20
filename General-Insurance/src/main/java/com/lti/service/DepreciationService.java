@@ -31,29 +31,35 @@ public class DepreciationService {
 		
 		long noOfMonthsBetween=0;
 		double depreciationPrice=0;
-		int depreciationPercentage=0;
+		//int depreciationPercentage=0;
+		double idv = 0;
 		
         noOfMonthsBetween = ChronoUnit.MONTHS.between(registrationDate, todayDate);
 		
 		if(noOfMonthsBetween <= 12) {
 			depreciationPrice= price*0.1;
-			depreciationPercentage= 10;
+			//depreciationPercentage= 10;
+			idv=price-depreciationPrice;
 		}
 		else if(noOfMonthsBetween >12 && noOfMonthsBetween <=24) {
 			depreciationPrice= price*0.2;
-			depreciationPercentage= 20;
+			//depreciationPercentage= 20;
+			idv=price-depreciationPrice;
 		}
 		else if(noOfMonthsBetween >24 && noOfMonthsBetween <=36) {
 			depreciationPrice= price*0.3;
-			depreciationPercentage= 30;
+			//depreciationPercentage= 30;
+			idv=price-depreciationPrice;
 		}
 		else if(noOfMonthsBetween >36 && noOfMonthsBetween <=48) {
 			depreciationPrice= price*0.4;
-			depreciationPercentage= 40;
+			//depreciationPercentage= 40;
+			idv=price-depreciationPrice;
 		}
 		else {
 			depreciationPrice= price*0.5;
-			depreciationPercentage= 50;
+			//depreciationPercentage= 50;
+			idv=price-depreciationPrice;
 		}
 		
 		long age=(int) Math.ceil(noOfMonthsBetween/12);
@@ -63,7 +69,8 @@ public class DepreciationService {
 		Depreciation depreciation= new Depreciation();
 		depreciation.setDepreciationAmount(depreciationPrice);
 		depreciation.setVehicleAge(age);
-		depreciation.setPercentage(depreciationPercentage);
+		//depreciation.setPercentage(depreciationPercentage);
+		depreciation.setIdv(idv);
 		depreciation.setVehicle(vehicle);
 		
 		depriciationRepo.save(depreciation);
