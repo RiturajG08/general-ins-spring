@@ -13,10 +13,5 @@ public class PolicyRepository extends GenericRepository{
 				.getSingleResult()== 1 ? true : false;
 	}
 	
-	public int fetchVehiclePriceAndDepreciationAmount(int vid) {
-		return (Integer)
-				entityManager
-				.createQuery("select ")
-		
-	}
+	
 }
