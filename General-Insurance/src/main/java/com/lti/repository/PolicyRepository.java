@@ -15,11 +15,11 @@ public class PolicyRepository extends GenericRepository{
 				.getSingleResult()== 1 ? true : false;
 	}
 	
-	public double calculateIdv(int did) {
+	public double calculateIdv(int id) {
 		return (Double)
 				entityManager
 				.createQuery("select d.idv from Depreciation d where d.id= :did")
-				.setParameter("did", did)
+				.setParameter("did", id)
 				.getSingleResult();
 		
 		

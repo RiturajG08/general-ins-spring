@@ -36,8 +36,8 @@ public class Policy {
 	@Column(name="policy_end_date")
 	private LocalDate policyEndDate;
 	
-	private int premium;
-	private int idv;
+	private double premium;
+	private double idv;
 	
 	@Column(name="remaining_claim_amount")
 	private int remainingClaimAmount;
@@ -97,19 +97,19 @@ public class Policy {
 		this.policyEndDate = policyEndDate;
 	}
 
-	public int getPremium() {
+	public double getPremium() {
 		return premium;
 	}
 
-	public void setPremium(int premium) {
+	public void setPremium(double premium) {
 		premium = premium;
 	}
 
-	public int getIdv() {
+	public double getIdv() {
 		return idv;
 	}
 
-	public void setIdv(int idv) {
+	public void setIdv(double idv) {
 		this.idv = idv;
 	}
 
