@@ -27,6 +27,7 @@ public class DepreciationController {
 		try {
 			Depreciation depreciation= depreciationService.addDepreciationToVehicle(depreciationDto.getId());
 			int id= depreciation.getId();
+			
 			DepreciationStatus status= new DepreciationStatus();
 			status.setStatus(true);
 			status.setMessage("depreciation added sucessfully!");
