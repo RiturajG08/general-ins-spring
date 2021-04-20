@@ -33,7 +33,7 @@ public class DepreciationService {
 		double depreciationPrice=0;
 		int depreciationPercentage=0;
 		
-		noOfMonthsBetween = ChronoUnit.MONTHS.between(registrationDate, todayDate);
+        noOfMonthsBetween = ChronoUnit.MONTHS.between(registrationDate, todayDate);
 		
 		if(noOfMonthsBetween <= 12) {
 			depreciationPrice= price*0.1;
@@ -57,7 +57,7 @@ public class DepreciationService {
 		}
 		
 		long age=(int) Math.ceil(noOfMonthsBetween/12);
-				
+		
 		Vehicle vehicle= (Vehicle) depriciationRepo.find(Vehicle.class, id);
 		
 		Depreciation depreciation= new Depreciation();
