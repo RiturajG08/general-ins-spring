@@ -92,9 +92,12 @@ public class DepreciationService {
 			depreciationPrice= price*0.5;
 		}
 		
+		Vehicle vehicle= (Vehicle) depriciationRepo.find(Vehicle.class, id);
+		
 		Depreciation depreciation= new Depreciation();
 		depreciation.setDepreciationAmount(depreciationPrice);
 		depreciation.setVehicleAge(noOfMonthsBetween/12);
+		depreciation.setVehicle(vehicle);
 		
 		depriciationRepo.save(depreciation);
 		return depreciation;
