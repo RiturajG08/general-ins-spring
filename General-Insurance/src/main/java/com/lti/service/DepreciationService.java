@@ -73,23 +73,29 @@ public class DepreciationService {
 		
 		long noOfMonthsBetween=0;
 		double depreciationPrice=0;
+		int depreciationPercentage=0;
 		
 		noOfMonthsBetween = ChronoUnit.MONTHS.between(firstDate, newDate);
 		
 		if(noOfMonthsBetween <= 12) {
 			depreciationPrice= price*0.1;
+			depreciationPercentage= 10;
 		}
 		else if(noOfMonthsBetween >12 && noOfMonthsBetween <=24) {
 			depreciationPrice= price*0.2;
+			depreciationPercentage= 20;
 		}
 		else if(noOfMonthsBetween >24 && noOfMonthsBetween <=36) {
 			depreciationPrice= price*0.3;
+			depreciationPercentage= 30;
 		}
 		else if(noOfMonthsBetween >36 && noOfMonthsBetween <=48) {
 			depreciationPrice= price*0.4;
+			depreciationPercentage= 40;
 		}
 		else {
 			depreciationPrice= price*0.5;
+			depreciationPercentage= 50;
 		}
 		
 		Vehicle vehicle= (Vehicle) depriciationRepo.find(Vehicle.class, id);
@@ -97,6 +103,7 @@ public class DepreciationService {
 		Depreciation depreciation= new Depreciation();
 		depreciation.setDepreciationAmount(depreciationPrice);
 		depreciation.setVehicleAge(noOfMonthsBetween/12);
+		depreciation.setPercentage(depreciationPercentage);
 		depreciation.setVehicle(vehicle);
 		
 		depriciationRepo.save(depreciation);
