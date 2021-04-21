@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lti.dto.PolicyDto;
 import com.lti.dto.PolicyStatus;
 import com.lti.dto.VehicleStatus;
 import com.lti.entity1.Policy;
@@ -21,10 +22,10 @@ public class PolicyController {
 	private PolicyService  policyService;
 	
 	@PostMapping("/policy")
-	public PolicyStatus addPolicy(@RequestBody Policy policy ) {
+	public PolicyStatus addPolicy(@RequestBody PolicyDto policyDto ) {
 		//try {
 			
-			int id= policyService.addPolicy(policy);
+			int id= policyService.addPolicyToVehicle(policyDto.getId());
 			
 			PolicyStatus status= new PolicyStatus();
 			status.setStatus(true);
