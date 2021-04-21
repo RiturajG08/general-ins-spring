@@ -28,7 +28,7 @@ public class Policy {
 	@Column(name="policy_type")
 	private String type;
 	
-	private char renewal;
+	
 	
 	@Column(name="policy_start_date")
 	private LocalDate policyStartDate;
@@ -39,8 +39,7 @@ public class Policy {
 	private double premium;
 	private double idv;
 	
-	@Column(name="remaining_claim_amount")
-	private int remainingClaimAmount;
+	
 	
 	@ManyToOne
 	@JoinColumn(name="customer_id")
@@ -73,14 +72,6 @@ public class Policy {
 		this.type = type;
 	}
 
-	public char getRenewal() {
-		return renewal;
-	}
-
-	public void setRenewal(char renewal) {
-		this.renewal = renewal;
-	}
-
 	public LocalDate getPolicyStartDate() {
 		return policyStartDate;
 	}
@@ -102,7 +93,7 @@ public class Policy {
 	}
 
 	public void setPremium(double premium) {
-		premium = premium;
+		this.premium = premium;
 	}
 
 	public double getIdv() {
@@ -113,13 +104,7 @@ public class Policy {
 		this.idv = idv;
 	}
 
-	public int getRemainingClaimAmount() {
-		return remainingClaimAmount;
-	}
-
-	public void setRemainingClaimAmount(int remainingClaimAmount) {
-		this.remainingClaimAmount = remainingClaimAmount;
-	}
+	
 
 	public Customer getCustomer() {
 		return customer;

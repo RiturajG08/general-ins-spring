@@ -20,10 +20,11 @@ import java.time.temporal.ChronoUnit;
 @Transactional
 public class DepreciationService {
 	
+	
 	@Autowired
 	private DepreciationRepository depriciationRepo;
 	
-	public Depreciation addDepreciationToVehicle(int id) {
+	public int addDepreciationToVehicle(int id) {
 		int price= depriciationRepo.fetchVehiclePrice(id);
 		
 		
@@ -32,19 +33,16 @@ public class DepreciationService {
 		
 		long noOfMonthsBetween=0;
 		double depreciationPrice=0;
-		//int depreciationPercentage=0;
 		double idv = 0;
 		
         noOfMonthsBetween = ChronoUnit.MONTHS.between(registrationDate, todayDate);
 		
 		if(noOfMonthsBetween <= 12) {
 			depreciationPrice= price*0.1;
-			//depreciationPercentage= 10;
 			idv=price-depreciationPrice;
 		}
 		else if(noOfMonthsBetween >12 && noOfMonthsBetween <=24) {
 			depreciationPrice= price*0.2;
-			//depreciationPercentage= 20;
 			idv=price-depreciationPrice;
 		}
 		else if(noOfMonthsBetween >24 && noOfMonthsBetween <=36) {
@@ -54,12 +52,10 @@ public class DepreciationService {
 		}
 		else if(noOfMonthsBetween >36 && noOfMonthsBetween <=48) {
 			depreciationPrice= price*0.4;
-			//depreciationPercentage= 40;
 			idv=price-depreciationPrice;
 		}
 		else {
 			depreciationPrice= price*0.5;
-			//depreciationPercentage= 50;
 			idv=price-depreciationPrice;
 		}
 		
@@ -70,12 +66,10 @@ public class DepreciationService {
 		Depreciation depreciation= new Depreciation();
 		depreciation.setDepreciationAmount(depreciationPrice);
 		depreciation.setVehicleAge(age);
-		//depreciation.setPercentage(depreciationPercentage);
 		depreciation.setIdv(idv);
 		depreciation.setVehicle(vehicle);
-		
-		depriciationRepo.save(depreciation);
-		return depreciation;
+		Depreciation updatedDepreciation= (Depreciation) depriciationRepo.save(depreciation);
+		return updatedDepreciation.getId();
 	}
 	
 }
