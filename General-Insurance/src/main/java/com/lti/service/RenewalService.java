@@ -22,7 +22,7 @@ public class RenewalService {
 	@Autowired
 	private RenewalRepository renewalRepository;
 	
-	public Policy login(int id) {
+	public Policy renew(int id) {
 		try {
 			int pid= renewalRepository.fetchByPolicyId(id);
 	//		Policy policy= renewalRepository.find(Policy.class, pid);

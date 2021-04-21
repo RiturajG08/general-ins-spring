@@ -22,9 +22,9 @@ public class RenewalController {
 	private RenewalService renewalService;
 
 	@PostMapping("/renewal")
-	public RenewalStatus login(@RequestBody Renewal renewal) {
+	public RenewalStatus renewPolicy(@RequestBody Renewal renewal) {
 		try {
-		Policy Policy = renewalService.login(renewal.getId());
+		Policy Policy = renewalService.renew(renewal.getId());
 			RenewalStatus renewalStatus = new RenewalStatus();
 			renewalStatus.setStatus(true);
 			renewalStatus.setMessage("policy valid");
