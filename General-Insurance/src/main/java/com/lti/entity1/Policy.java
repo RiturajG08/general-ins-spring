@@ -28,7 +28,7 @@ public class Policy {
 	@Column(name="policy_type")
 	private String type;
 	
-	private char renewal;
+	
 	
 	@Column(name="policy_start_date")
 	private LocalDate policyStartDate;
@@ -70,14 +70,6 @@ public class Policy {
 
 	public void setType(String type) {
 		this.type = type;
-	}
-
-	public char getRenewal() {
-		return renewal;
-	}
-
-	public void setRenewal(char renewal) {
-		this.renewal = renewal;
 	}
 
 	public LocalDate getPolicyStartDate() {

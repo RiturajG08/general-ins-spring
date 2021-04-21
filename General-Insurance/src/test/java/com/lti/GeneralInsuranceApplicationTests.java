@@ -33,7 +33,7 @@ class GeneralInsuranceApplicationTests {
 
 	Policy policy= new Policy();
 	policy.setType("Third-Party");;
-	policy.setRenewal('n');
+	//policy.setRenewal('n');
 	policy.setPolicyStartDate(LocalDate.of(2020, 7, 4));
 	policy.setPolicyEndDate(LocalDate.of(2021, 7, 4));
 	policy.setPremium(30000);;
