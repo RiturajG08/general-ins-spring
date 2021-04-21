@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.lti.entity1.Policy;
+import com.lti.entity1.Vehicle;
+import com.lti.exception.VehicleServiceException;
 import com.lti.repository.PolicyRepository;
 
 @Service
@@ -14,8 +16,8 @@ public class PolicyService {
 	@Autowired
 	private PolicyRepository policyRepository;
 	
-	public Policy addPolicy(Policy policy, int id) {
-		double idv= policyRepository.calculateIdv(id);
+	public int addPolicy(Policy policy) {
+		/*double idv= policyRepository.calculateIdv(id);
 		double premium= idv*0.05;
 
 		policy.setIdv(idv);
@@ -23,7 +25,12 @@ public class PolicyService {
 		
 		policyRepository.save(policy);
 		
-		return policy;
+		return policy;*/
+	
+		
+		Policy updatedPolicy= (Policy) policyRepository.save(policy);
+		return updatedPolicy.getId();
+		
 	}
 
 }
