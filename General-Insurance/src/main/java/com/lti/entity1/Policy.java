@@ -102,7 +102,7 @@ public class Policy {
 	}
 
 	public void setPremium(double premium) {
-		premium = premium;
+		this.premium = premium;
 	}
 
 	public double getIdv() {
