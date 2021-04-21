@@ -20,6 +20,7 @@ import java.time.temporal.ChronoUnit;
 @Transactional
 public class DepreciationService {
 	
+	
 	@Autowired
 	private DepreciationRepository depriciationRepo;
 	
