@@ -1,5 +1,6 @@
 package com.lti.repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -15,11 +16,11 @@ public class PolicyRepository extends GenericRepository{
 				.getSingleResult()== 1 ? true : false;
 	}
 	
-	public double calculateIdv(int id) {
+	public double calculateIdv(int cid, int did, int vid,String period , LocalDate startDate,String type ) {
 		return (Double)
 				entityManager
 				.createQuery("select d.idv from Depreciation d where d.id= :did")
-				.setParameter("did", id)
+				.setParameter("did", did)
 				.getSingleResult();
 		
 		
