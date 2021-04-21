@@ -39,8 +39,7 @@ public class Policy {
 	private double premium;
 	private double idv;
 	
-	@Column(name="remaining_claim_amount")
-	private int remainingClaimAmount;
+	
 	
 	@ManyToOne
 	@JoinColumn(name="customer_id")
@@ -113,13 +112,7 @@ public class Policy {
 		this.idv = idv;
 	}
 
-	public int getRemainingClaimAmount() {
-		return remainingClaimAmount;
-	}
-
-	public void setRemainingClaimAmount(int remainingClaimAmount) {
-		this.remainingClaimAmount = remainingClaimAmount;
-	}
+	
 
 	public Customer getCustomer() {
 		return customer;
