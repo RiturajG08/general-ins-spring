@@ -31,13 +31,7 @@ public class RenewalRepository extends GenericRepository{
 				.getSingleResult();
     }
 	
-	public double fetchIdvOfPolicy(int id) {
-		return (double)
-				entityManager
-				.createQuery("select p.idv from Policy p where p.id= : pid")
-				.setParameter("pid", id)
-				.getSingleResult();
-	}
+	
 	
 	public LocalDate fetchVehicleRegistartionDate(int id) {
 		return (LocalDate)

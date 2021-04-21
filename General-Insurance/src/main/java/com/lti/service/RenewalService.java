@@ -22,7 +22,7 @@ public class RenewalService {
 	@Autowired
 	private RenewalRepository renewalRepository;
 	
-	public Policy renew(int id) {
+	/*public Policy renew(int id) {
 		try {
 			int pid= renewalRepository.fetchByPolicyId(id);
 	//		Policy policy= renewalRepository.find(Policy.class, pid);
@@ -95,6 +95,18 @@ public class RenewalService {
 		
 		
 		
+	}  */
+	
+	public Policy login(int id) {
+		try {
+		//	password= Base64.getEncoder().encodeToString(password.getBytes());
+			int pid= renewalRepository.fetchByPolicyId(id);
+			Policy policy= renewalRepository.find(Policy.class, pid);
+			return policy;
+		}
+		catch(EmptyResultDataAccessException e) {
+			throw new CustomerServiceException("Invalid policy number");
+		}
 	}
 
 }
