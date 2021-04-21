@@ -22,10 +22,10 @@ public class PolicyController {
 	private PolicyService  policyService;
 	
 	@PostMapping("/policy")
-	public PolicyStatus addPolicy(@RequestBody Policy policy ) {
+	public PolicyStatus addPolicy(@RequestBody PolicyDto policyDto) {
 		//try {
 			
-			int id= policyService.addPolicyToVehicle(policy.getDepreciation());
+			int id= policyService.addPolicyToVehicle(policyDto.getCid(), policyDto.getDid(), policyDto.getVid(), policyDto.getPeriod(), policyDto.getStartDate(), policyDto.getType());
 			
 			PolicyStatus status= new PolicyStatus();
 			status.setStatus(true);
