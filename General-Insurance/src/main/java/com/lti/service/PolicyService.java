@@ -36,13 +36,13 @@ public class PolicyService {
 		
 		LocalDate endDate;
 		
-		if(period.equals("OneYear")) {
+		if(period.equals("One Year")) {
 			endDate= startDate.plusYears(1);
 		}
-		else if (period.equals("ThreeYear")) {
+		else if (period.equals("Three Year")) {
 			endDate= startDate.plusYears(3);
 		}
-		else if (period.equals("FiveYear")) {
+		else if (period.equals("Five Year")) {
 			endDate= startDate.plusYears(5);
 		}
 		else {
