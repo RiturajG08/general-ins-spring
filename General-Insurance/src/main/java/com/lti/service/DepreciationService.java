@@ -18,7 +18,7 @@ import java.time.temporal.ChronoUnit;
 
 @Service
 @Transactional
-public class DepreciationService {
+public class DepreciationService implements DepreciationInterface {
 	
 	
 	@Autowired

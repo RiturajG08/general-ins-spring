@@ -28,8 +28,6 @@ public class Policy {
 	@Column(name="policy_type")
 	private String type;
 	
-	
-	
 	@Column(name="policy_start_date")
 	private LocalDate policyStartDate;
 	
@@ -37,9 +35,12 @@ public class Policy {
 	private LocalDate policyEndDate;
 	
 	private double premium;
-	private double idv;
 	
+	@Column(name="each_year_idv")
+	private double eachYearIdv;
 	
+	@Column(name="total_idv")
+	private double totalIdv;
 	
 	@ManyToOne
 	@JoinColumn(name="customer_id")
@@ -95,16 +96,22 @@ public class Policy {
 	public void setPremium(double premium) {
 		this.premium = premium;
 	}
-
-	public double getIdv() {
-		return idv;
-	}
-
-	public void setIdv(double idv) {
-		this.idv = idv;
-	}
-
 	
+	public double getEachYearIdv() {
+		return eachYearIdv;
+	}
+
+	public void setEachYearIdv(double eachYearIdv) {
+		this.eachYearIdv = eachYearIdv;
+	}
+
+	public double getTotalIdv() {
+		return totalIdv;
+	}
+
+	public void setTotalIdv(double totalIdv) {
+		this.totalIdv = totalIdv;
+	}
 
 	public Customer getCustomer() {
 		return customer;
