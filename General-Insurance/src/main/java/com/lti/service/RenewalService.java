@@ -17,7 +17,7 @@ import com.lti.repository.RenewalRepository;
 
 @Service
 @Transactional
-public class RenewalService {
+public class RenewalService implements RenewalInterface{
 	
 	@Autowired
 	private RenewalRepository renewalRepository;
@@ -101,7 +101,7 @@ public class RenewalService {
 		try {
 		//	password= Base64.getEncoder().encodeToString(password.getBytes());
 			int pid= renewalRepository.fetchByPolicyId(id);
-			Policy policy= renewalRepository.find(Policy.class, pid);
+			Policy policy= (Policy)renewalRepository.find(Policy.class, pid);
 			return policy;
 		}
 		catch(EmptyResultDataAccessException e) {
