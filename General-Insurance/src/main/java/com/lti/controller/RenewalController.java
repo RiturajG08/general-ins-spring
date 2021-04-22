@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.lti.dto.Renewal;
+import com.lti.dto.RenewalBuyPolicy;
 import com.lti.dto.RenewalStatus;
 import com.lti.entity1.Policy;
 import com.lti.exception.RenewalServiceException;
@@ -37,5 +38,24 @@ public class RenewalController {
 			renewalStatus.setMessage(e.getMessage());		
 			return renewalStatus;
 		}
+	}
+	
+	@PostMapping("/renewalbuypolicy")
+	public RenewalStatus renewBuyPolicy(@RequestBody RenewalBuyPolicy renewalBuyPolicy) {
+	/*	try {
+		Policy Policy = renewalService.login(renewal.getId());
+			RenewalStatus renewalStatus = new RenewalStatus();
+			renewalStatus.setStatus(true);
+			renewalStatus.setMessage("Please enter vaild vehicle number");
+			renewalStatus.setPolicyId(renewal.getId());
+			return renewalStatus;
+		}
+		catch(RenewalServiceException e) {
+			RenewalStatus renewalStatus = new RenewalStatus();
+			renewalStatus.setStatus(true);
+			renewalStatus.setMessage(e.getMessage());		
+			return renewalStatus;
+		} */
+		return null;
 	}
 }
