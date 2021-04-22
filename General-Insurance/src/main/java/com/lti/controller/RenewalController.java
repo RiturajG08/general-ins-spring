@@ -40,14 +40,13 @@ public class RenewalController {
 		}
 	}
 	
-	@PostMapping("/renewalbuypolicy")
-	public RenewalStatus renewBuyPolicy(@RequestBody RenewalBuyPolicy renewalBuyPolicy) {
-	/*	try {
-		Policy Policy = renewalService.login(renewal.getId());
+	@PostMapping("/renewalpolicy")
+	public RenewalStatus renewPolicy(@RequestBody RenewalBuyPolicy renewalBuyPolicy) {
+		try {
+		Policy Policy = renewalService.renewOldPolicy(renewalBuyPolicy.getPid(),renewalBuyPolicy.getNumber(), renewalBuyPolicy.getType(), renewalBuyPolicy.getPeriod());
 			RenewalStatus renewalStatus = new RenewalStatus();
 			renewalStatus.setStatus(true);
 			renewalStatus.setMessage("Please enter vaild vehicle number");
-			renewalStatus.setPolicyId(renewal.getId());
 			return renewalStatus;
 		}
 		catch(RenewalServiceException e) {
@@ -55,9 +54,8 @@ public class RenewalController {
 			renewalStatus.setStatus(true);
 			renewalStatus.setMessage(e.getMessage());		
 			return renewalStatus;
-		} */
+		} 
 		
-		return null;
 	
 	}
 }

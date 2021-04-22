@@ -33,7 +33,7 @@ public class RenewalRepository extends GenericRepository{
 	
 	
 	
-/*	public LocalDate fetchVehicleRegistartionDate(int pid, String number, String type) {
+	public LocalDate fetchVehicleRegistartionDate(int pid, String number, String type, String period) {
 		return (LocalDate)
 				entityManager
 				.createQuery(" select  v.registrationDate from Vehicle v where v.number= :vnumber")
@@ -41,13 +41,13 @@ public class RenewalRepository extends GenericRepository{
 				.getSingleResult();
     }
 	
-	public int fetchVehiclePrice(int pid, String number, String type) {
+	public int fetchVehiclePrice(int pid, String number, String type, String period) {
 		return (int)
 				entityManager
 				.createQuery(" select  v.price from Vehicle v where v.number= :vnumber")
 				.setParameter("vnumber", number)
 				.getSingleResult();
-	} */
+	}
 	
 	
 	
