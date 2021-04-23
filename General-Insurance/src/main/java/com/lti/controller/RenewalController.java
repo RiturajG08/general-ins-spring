@@ -25,7 +25,7 @@ public class RenewalController {
 	@PostMapping("/renewal")
 	public RenewalStatus renewPolicy(@RequestBody Renewal renewal) {
 		try {
-		Policy Policy = renewalService.login(renewal.getId());
+		Policy Policy = renewalService.checkPolicyNumber(renewal.getId());
 			RenewalStatus renewalStatus = new RenewalStatus();
 			renewalStatus.setStatus(true);
 			renewalStatus.setMessage("policy valid");
@@ -46,12 +46,12 @@ public class RenewalController {
 		Policy Policy = renewalService.renewOldPolicy(renewalBuyPolicy.getPid(),renewalBuyPolicy.getNumber(), renewalBuyPolicy.getType(), renewalBuyPolicy.getPeriod());
 			RenewalStatus renewalStatus = new RenewalStatus();
 			renewalStatus.setStatus(true);
-			renewalStatus.setMessage("Please enter vaild vehicle number");
+			renewalStatus.setMessage("Your Policy has been renewed successfully");
 			return renewalStatus;
 		}
 		catch(RenewalServiceException e) {
 			RenewalStatus renewalStatus = new RenewalStatus();
-			renewalStatus.setStatus(true);
+			renewalStatus.setStatus(false);
 			renewalStatus.setMessage(e.getMessage());		
 			return renewalStatus;
 		} 
