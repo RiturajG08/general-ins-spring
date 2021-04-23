@@ -34,7 +34,7 @@ public class RenewalController {
 		}
 		catch(RenewalServiceException e) {
 			RenewalStatus renewalStatus = new RenewalStatus();
-			renewalStatus.setStatus(true);
+			renewalStatus.setStatus(false);
 			renewalStatus.setMessage(e.getMessage());		
 			return renewalStatus;
 		}
