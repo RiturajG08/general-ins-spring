@@ -10,7 +10,7 @@ import com.lti.repository.PolicyDetailsRepository;
 
 @Service
 @Transactional
-public class PolicyDetailsService {
+public class PolicyDetailsService implements PolicyDetailsInterface {
 	
 	@Autowired
 	private PolicyDetailsRepository policyDetailsRepository;

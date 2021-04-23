@@ -21,18 +21,18 @@ public class Claim {
 	@SequenceGenerator(sequenceName="claim_seq", allocationSize=1, name="my_sequence")
 	private int id;
 	
-	@Column(name="date_of_loss")
-	private LocalDate dateOfLoss;
+	
 	
 	@Column(name="claim_date")
 	private LocalDate claimDate;
 	
-	@Column(name="date_of_settlement")
-	private LocalDate dateOfSettlement;
 	
 	private int amount;
 	private String reason;
 	private String status;
+	
+	@Column(name ="incident_photo")
+	private String incidentPhoto;
 	
 	@ManyToOne
 	@JoinColumn(name="policy_id")
@@ -46,28 +46,12 @@ public class Claim {
 		this.id = id;
 	}
 
-	public LocalDate getDateOfLoss() {
-		return dateOfLoss;
-	}
-
-	public void setDateOfLoss(LocalDate dateOfLoss) {
-		this.dateOfLoss = dateOfLoss;
-	}
-
 	public LocalDate getClaimDate() {
 		return claimDate;
 	}
 
 	public void setClaimDate(LocalDate claimDate) {
 		this.claimDate = claimDate;
-	}
-
-	public LocalDate getDateOfSettlement() {
-		return dateOfSettlement;
-	}
-
-	public void setDateOfSettlement(LocalDate dateOfSettlement) {
-		this.dateOfSettlement = dateOfSettlement;
 	}
 
 	public int getAmount() {
@@ -100,6 +84,14 @@ public class Claim {
 
 	public void setPolicy(Policy policy) {
 		this.policy = policy;
+	}
+	
+	public String getIncidentPhoto() {
+		return incidentPhoto;
+	}
+
+	public void setIncidentPhoto(String incidentPhoto) {
+		this.incidentPhoto = incidentPhoto;
 	}
 
 	
