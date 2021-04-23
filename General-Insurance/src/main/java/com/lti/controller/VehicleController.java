@@ -25,6 +25,7 @@ public class VehicleController {
 		try {
 			
 			int id= vehicleService.addVehicle(vehicle);
+		    vehicleService.add(id);
 			
 			VehicleStatus status= new VehicleStatus();
 			status.setStatus(true);
