@@ -18,6 +18,7 @@ public class VehicleController {
 	@Autowired
 	private VehicleService vehicleService;
 	
+	
 	@PostMapping("/vehicle")
 	public VehicleStatus register(@RequestBody Vehicle vehicle ) {
 		try {
