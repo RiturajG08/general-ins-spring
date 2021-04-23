@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class ClaimDto {
 	
 	private int pid;
-	private LocalDate dateOfLoss;
+	
 	private String reason;
 	
 	public int getPid() {
@@ -14,12 +14,7 @@ public class ClaimDto {
 	public void setPid(int pid) {
 		this.pid = pid;
 	}
-	public LocalDate getDateOfLoss() {
-		return dateOfLoss;
-	}
-	public void setDateOfLoss(LocalDate dateOfLoss) {
-		this.dateOfLoss = dateOfLoss;
-	}
+	
 	public String getReason() {
 		return reason;
 	}
