@@ -47,6 +47,7 @@ public class RenewalController {
 			RenewalStatus renewalStatus = new RenewalStatus();
 			renewalStatus.setStatus(true);
 			renewalStatus.setMessage("Your Policy has been renewed successfully");
+			renewalStatus.setPolicyId(renewalBuyPolicy.getPid());
 			return renewalStatus;
 		}
 		catch(RenewalServiceException e) {
