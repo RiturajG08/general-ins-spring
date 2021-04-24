@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.lti.dto.DepreciationDetails;
+import com.lti.entity1.Depreciation;
 import com.lti.entity1.Vehicle;
 import com.lti.exception.VehicleServiceException;
 import com.lti.repository.DepreciationRepository;
@@ -22,18 +24,18 @@ public class VehicleService implements VehicleInterface {
 	@Autowired
 	private DepreciationRepository depriciationRepo;
 
-	public int addVehicle(Vehicle vehicle) {
+	public Vehicle addVehicle(Vehicle vehicle) {
 		if(vehicleRepository.isVechiclePresent(vehicle.getNumber())) {
 			throw new VehicleServiceException("vehicle already registered !");
 		}
 		Vehicle updatedVehicle= (Vehicle) vehicleRepository.save(vehicle);
-		return updatedVehicle.getId();
+		return updatedVehicle;
 		}
 	
 	   //int d=depreciationService.addDepreciationToVehicle(id);
 	
-	public int add(int id) {
-		int d=depreciationService.addDepreciationToVehicle(id);
-		return d;
+	public Depreciation add(int id) {
+		Depreciation depreciation=depreciationService.addDepreciationToVehicle(id);
+		return depreciation;
 	}
 	}

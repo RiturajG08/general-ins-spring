@@ -1,6 +1,8 @@
 package com.lti.service;
 
+import com.lti.entity1.Depreciation;
+
 public interface DepreciationInterface {
 
-	public int addDepreciationToVehicle(int id);
+	public Depreciation addDepreciationToVehicle(int id);
 }

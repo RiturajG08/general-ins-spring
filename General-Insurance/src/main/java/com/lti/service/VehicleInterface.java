@@ -4,5 +4,5 @@ import com.lti.entity1.Vehicle;
 
 public interface VehicleInterface {
 
-	public int addVehicle(Vehicle vehicle);
+	public Vehicle addVehicle(Vehicle vehicle);
 }

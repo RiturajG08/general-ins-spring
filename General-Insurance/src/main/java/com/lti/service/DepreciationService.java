@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.lti.dto.DepreciationDetails;
 import com.lti.dto.DepreciationStatus;
 import com.lti.entity1.Depreciation;
 import com.lti.entity1.Vehicle;
@@ -24,7 +25,7 @@ public class DepreciationService implements DepreciationInterface {
 	@Autowired
 	private DepreciationRepository depriciationRepo;
 	
-	public int addDepreciationToVehicle(int id) {
+	public Depreciation addDepreciationToVehicle(int id) {
 		int price= depriciationRepo.fetchVehiclePrice(id);
 		
 		
@@ -69,7 +70,7 @@ public class DepreciationService implements DepreciationInterface {
 		depreciation.setIdv(idv);
 		depreciation.setVehicle(vehicle);
 		Depreciation updatedDepreciation= (Depreciation) depriciationRepo.save(depreciation);
-		return updatedDepreciation.getId();
+		return updatedDepreciation;
 	}
 	
 }
