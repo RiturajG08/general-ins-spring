@@ -15,7 +15,7 @@ public class AdminService {
 	@Autowired
 	private AdminRepository adminRepository;
 	
-	public Claim searchByClaimId(int id, int amount, String status) {
+	public Claim searchByClaimId(int id, int amount) {
 	
 		Claim claim = (Claim) adminRepository.fetchClaimById(id);
 		claim.setAmount(amount);
@@ -23,5 +23,14 @@ public class AdminService {
 		
 		Claim updatedClaim = (Claim) adminRepository.save(claim);
 		return updatedClaim;
+	}
+	
+	public Claim rejectClaim(int rcid, String rejectionReason) {
+		Claim claim = (Claim) adminRepository.fetchClaimById(rcid);
+		claim.setStatus("Rejected");
+		claim.setRejectionReason(rejectionReason);
+		Claim updatedClaim = (Claim) adminRepository.save(claim);
+		return updatedClaim;
+		
 	}
 }

@@ -2,28 +2,19 @@ package com.lti.dto;
 
 public class AdminDto  {
 	
-	private int id;
+	private int cid;
 	private int amount;
-	private String status;
-	
+
 	public int getAmount() {
 		return amount;
 	}
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
-	
-	public int getId() {
-		return id;
+	public int getCid() {
+		return cid;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setCid(int cid) {
+		this.cid = cid;
 	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	} 
-
 }

@@ -30,7 +30,16 @@ public class Claim {
 	private int amount;
 	private String reason;
 	private String status;
+	private String rejectionReason;
 	
+	public String getRejectionReason() {
+		return rejectionReason;
+	}
+
+	public void setRejectionReason(String rejectionReason) {
+		this.rejectionReason = rejectionReason;
+	}
+
 	@Column(name ="incident_photo")
 	private String incidentPhoto;
 	

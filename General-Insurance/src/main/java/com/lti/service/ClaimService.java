@@ -37,4 +37,6 @@ public class ClaimService {
 		return claimRepository.searchAllClaims();
 		
 	}
+	
+	
 }
