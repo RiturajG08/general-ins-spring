@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.dto.PolicyDetailsDto;
 import com.lti.dto.PolicyDetailsStatus;
+import com.lti.dto.PolicyDto;
+import com.lti.dto.PolicyStatus;
 import com.lti.entity1.Policy;
+import com.lti.exception.PolicyServiceException;
 import com.lti.service.PolicyDetailsService;
 
 @RestController
@@ -18,25 +21,20 @@ import com.lti.service.PolicyDetailsService;
 public class PolicyDetailsController {
 	
 	@Autowired
-	private PolicyDetailsService pds;
+	private PolicyDetailsService policyDetailsService;
 	
-	/*@GetMapping("/searchPolicy")
-	public Policy search(@RequestParam("id") int id) {
-		Policy policy = pds.get(id);
-		return policy;	
-	}*/
 	
-	@PostMapping("/searchPolicy")
-	public PolicyDetailsStatus search(@RequestBody PolicyDetailsDto policyDetailsDto) {
-		Policy policy = pds.get(policyDetailsDto.getPid());
-		PolicyDetailsStatus policyDetailsStatus = new PolicyDetailsStatus();
-		policyDetailsStatus.setPolicyNumber(policy.getId());
-		policyDetailsStatus.setStartDate(policy.getPolicyStartDate());
-		policyDetailsStatus.setEndDate(policy.getPolicyEndDate());
-		policyDetailsStatus.setIdv(policy.getEachYearIdv());
-		policyDetailsStatus.setPremium(policy.getPremium());
-		policyDetailsStatus.setTotalIdv(policy.getTotalIdv());
-		
-		return policyDetailsStatus;	
+	@PostMapping("/policydetails")
+	public PolicyDetailsStatus search(@RequestBody PolicyDto policyDto) {
+			PolicyDetailsDto policyDetailsDto= policyDetailsService.addPolicyToVehicle(policyDto.getCid(), policyDto.getDid(), policyDto.getVid(), policyDto.getPeriod(), policyDto.getStartDate(), policyDto.getType());
+			
+			PolicyDetailsStatus status= new PolicyDetailsStatus();
+			status.setIdv(policyDetailsDto.getEachYearIdv());
+			status.setTotalIdv(policyDetailsDto.getTotalIdv());
+			status.setStartDate(policyDetailsDto.getStartDate());
+			status.setEndDate(policyDetailsDto.getEndDate());
+			status.setPremium(policyDetailsDto.getPremium());
+			status.setType(policyDetailsDto.getPolicyType());
+			return status;
 	}
 }

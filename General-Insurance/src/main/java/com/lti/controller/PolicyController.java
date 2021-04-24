@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.dto.PolicyDto;
+import com.lti.dto.PolicyHelperDto;
 import com.lti.dto.PolicyStatus;
+import com.lti.entity1.Policy;
 import com.lti.exception.PolicyServiceException;
 import com.lti.service.PolicyService;
 
@@ -19,26 +21,14 @@ public class PolicyController {
 	private PolicyService  policyService;
 	
 	@PostMapping("/policy")
-	public PolicyStatus addPolicy(@RequestBody PolicyDto policyDto) {
-		try {	
-			int id= policyService.addPolicyToVehicle(policyDto.getCid(), policyDto.getDid(), policyDto.getVid(), policyDto.getPeriod(), policyDto.getStartDate(), policyDto.getType());
+	public PolicyStatus addPolicy(@RequestBody Policy policy) {
+			int id= policyService.addPolicyToVehicle(policy);
 			
 			PolicyStatus status= new PolicyStatus();
 			status.setStatus(true);
 			status.setMessage("Policy buyed successfully!");
 			status.setPolicyId(id);
 			return status;
-		}
-		catch(PolicyServiceException e) {
-			PolicyStatus status= new PolicyStatus();
-			status.setStatus(false);
-			status.setMessage(e.getMessage());
-			return status;
-		}
 	}
-	
-	
-
-	
 	
 }

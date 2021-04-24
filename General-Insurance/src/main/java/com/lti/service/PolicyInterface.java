@@ -2,7 +2,10 @@ package com.lti.service;
 
 import java.time.LocalDate;
 
+import com.lti.dto.PolicyHelperDto;
+import com.lti.entity1.Policy;
+
 public interface PolicyInterface {
 
-	public int addPolicyToVehicle(int cid, int did, int vid, String period , LocalDate startDate, String type);
+	public int addPolicyToVehicle(Policy policy);
 }

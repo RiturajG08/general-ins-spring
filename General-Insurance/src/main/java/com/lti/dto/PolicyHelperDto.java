@@ -2,22 +2,40 @@ package com.lti.dto;
 
 import java.time.LocalDate;
 
-public class PolicyDetailsStatus extends Status {
-	
-	private String vehicleNumber; 
+public class PolicyHelperDto {
+
+	private int cid;
+	private int vid;
+	private int did;
+	private String type;
 	private LocalDate startDate;
 	private LocalDate endDate;
-	private double idv;
 	private double premium;
+	private double eachYearIdv;
 	private double totalIdv;
-	private String type;
-	
-	
-	public String getVehicleNumber() {
-		return vehicleNumber;
+	public int getCid() {
+		return cid;
 	}
-	public void setVehicleNumber(String vehicleNumber) {
-		this.vehicleNumber = vehicleNumber;
+	public void setCid(int cid) {
+		this.cid = cid;
+	}
+	public int getVid() {
+		return vid;
+	}
+	public void setVid(int vid) {
+		this.vid = vid;
+	}
+	public int getDid() {
+		return did;
+	}
+	public void setDid(int did) {
+		this.did = did;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 	public LocalDate getStartDate() {
 		return startDate;
@@ -31,17 +49,17 @@ public class PolicyDetailsStatus extends Status {
 	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
-	public double getIdv() {
-		return idv;
-	}
-	public void setIdv(double idv) {
-		this.idv = idv;
-	}
 	public double getPremium() {
 		return premium;
 	}
 	public void setPremium(double premium) {
 		this.premium = premium;
+	}
+	public double getEachYearIdv() {
+		return eachYearIdv;
+	}
+	public void setEachYearIdv(double eachYearIdv) {
+		this.eachYearIdv = eachYearIdv;
 	}
 	public double getTotalIdv() {
 		return totalIdv;
@@ -49,11 +67,7 @@ public class PolicyDetailsStatus extends Status {
 	public void setTotalIdv(double totalIdv) {
 		this.totalIdv = totalIdv;
 	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
-	}
+	
+	
 	
 }
