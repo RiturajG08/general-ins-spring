@@ -1,6 +1,7 @@
 package com.lti.service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,4 +32,9 @@ public class ClaimService {
 		Claim updatedClaim = (Claim) claimRepository.save(claim);
 		return updatedClaim.getId();
 		}
+	
+	public List<Claim> searchClaims(){
+		return claimRepository.searchAllClaims();
+		
+	}
 }

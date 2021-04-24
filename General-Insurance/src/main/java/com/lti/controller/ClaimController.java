@@ -1,13 +1,17 @@
 package com.lti.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.dto.ClaimDto;
 import com.lti.dto.ClaimStatus;
+import com.lti.entity1.Claim;
 import com.lti.service.ClaimService;
 import com.lti.service.CustomerService;
 
@@ -27,6 +31,11 @@ public class ClaimController {
 		claimStatus.setStatus(true);
 		claimStatus.setClaimId(id);
 		return claimStatus;
+	}
+	
+	@GetMapping("/searchAllClaims")
+	public List<Claim> getAllClaims() {
+		return claimService.searchClaims();
 	}
 
 }
