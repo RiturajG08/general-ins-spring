@@ -34,6 +34,8 @@ public class Policy {
 	@Column(name="policy_end_date")
 	private LocalDate policyEndDate;
 	
+	private String period;
+	
 	private double premium;
 	
 	@Column(name="each_year_idv")
@@ -97,6 +99,14 @@ public class Policy {
 		this.premium = premium;
 	}
 	
+	public String getPeriod() {
+		return period;
+	}
+
+	public void setPeriod(String period) {
+		this.period = period;
+	}
+
 	public double getEachYearIdv() {
 		return eachYearIdv;
 	}

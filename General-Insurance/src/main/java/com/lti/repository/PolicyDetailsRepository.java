@@ -13,7 +13,7 @@ public class PolicyDetailsRepository extends GenericRepository {
 		return entityManager.find(Policy.class,id);	
 	}
 	
-	public double calculateIdv(int cid, int did, int vid,String period , LocalDate startDate,String type ) {
+	public double calculateIdv(int cid, int did, int vid,String period, String type ) {
 		return (Double)
 				entityManager
 				.createQuery("select d.idv from Depreciation d where d.id= :did")

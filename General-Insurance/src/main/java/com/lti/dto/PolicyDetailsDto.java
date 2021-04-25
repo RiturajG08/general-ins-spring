@@ -17,10 +17,17 @@ public class PolicyDetailsDto {
 	private double eachYearIdv;
 	private double totalIdv;
 	private double premium;
+	private String period;
 	
 	
 	
 	
+	public String getPeriod() {
+		return period;
+	}
+	public void setPeriod(String period) {
+		this.period = period;
+	}
 	public int getId() {
 		return id;
 	}

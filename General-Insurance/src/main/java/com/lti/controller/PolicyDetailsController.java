@@ -26,7 +26,7 @@ public class PolicyDetailsController {
 	
 	@PostMapping("/policydetails")
 	public PolicyDetailsStatus search(@RequestBody PolicyDto policyDto) {
-			PolicyDetailsDto policyDetailsDto= policyDetailsService.addPolicyToVehicle(policyDto.getCid(), policyDto.getDid(), policyDto.getVid(), policyDto.getPeriod(), policyDto.getStartDate(), policyDto.getType());
+			PolicyDetailsDto policyDetailsDto= policyDetailsService.addPolicyToVehicle(policyDto.getCid(), policyDto.getDid(), policyDto.getVid(), policyDto.getPeriod(), policyDto.getType());
 			
 			PolicyDetailsStatus status= new PolicyDetailsStatus();
 			status.setIdv(policyDetailsDto.getEachYearIdv());
@@ -35,6 +35,7 @@ public class PolicyDetailsController {
 			status.setEndDate(policyDetailsDto.getEndDate());
 			status.setPremium(policyDetailsDto.getPremium());
 			status.setType(policyDetailsDto.getPolicyType());
+			status.setPeriod(policyDto.getPeriod());
 			return status;
 	}
 }

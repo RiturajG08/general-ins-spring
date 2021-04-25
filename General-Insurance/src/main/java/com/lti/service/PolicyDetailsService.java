@@ -19,12 +19,13 @@ public class PolicyDetailsService implements PolicyDetailsInterface {
 	@Autowired
 	private PolicyDetailsRepository policyDetailsRepository;
 	
-	public PolicyDetailsDto addPolicyToVehicle(int cid, int did, int vid, String period , LocalDate startDate, String type) {	
+	public PolicyDetailsDto addPolicyToVehicle(int cid, int did, int vid, String period , String type) {	
 		if(type.equals("Comprehensive")) {
-			double eachYearIdv=  policyDetailsRepository.calculateIdv(cid, did, vid, period, startDate, type);
+			double eachYearIdv=  policyDetailsRepository.calculateIdv(cid, did, vid, period, type);
 			double premium=0;
 			double totalIdv=0;
 			
+			LocalDate startDate= LocalDate.now();
 			PolicyDetailsDto policyDetailsDto = new PolicyDetailsDto();
 			policyDetailsDto.setEachYearIdv(eachYearIdv);
 			policyDetailsDto.setPolicyType(type);
@@ -59,9 +60,10 @@ public class PolicyDetailsService implements PolicyDetailsInterface {
 		}
 		else if(type.equals("Third Party")) {
 			
-			double eachYearIdv=  policyDetailsRepository.calculateIdv(cid, did, vid, period, startDate, type);
+			double eachYearIdv=  policyDetailsRepository.calculateIdv(cid, did, vid, period, type);
 			double premium=0;
 			double totalIdv=0;
+			LocalDate startDate= LocalDate.now();
 			
 			eachYearIdv= eachYearIdv- eachYearIdv*0.1;
 			

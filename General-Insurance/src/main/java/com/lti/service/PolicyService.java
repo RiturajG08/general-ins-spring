@@ -23,7 +23,23 @@ public class PolicyService implements PolicyInterface {
 	
 
 	public int addPolicyToVehicle(Policy policy) {
-	Policy updatedPolicy= (Policy) policyRepository.save(policy);
-	return updatedPolicy.getId();
+		LocalDate startDate= LocalDate.now();
+		policy.setPolicyStartDate(startDate);
+		LocalDate endDate;
+		String p= policy.getPeriod();
+		if(p.equals("One Year")) {
+			endDate= startDate.plusYears(1);
+		}
+		else if(p.equals("Three Year")) {
+			endDate= startDate.plusYears(3);
+		}
+		else {
+			endDate= startDate.plusYears(5);
+		}
+		policy.setPolicyEndDate(endDate);
+		Policy updatedPolicy= (Policy) policyRepository.save(policy);
+		return updatedPolicy.getId();
 	}
+	
+	
 }
