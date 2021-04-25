@@ -4,12 +4,15 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Base64;
 import java.util.Calendar;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.lti.dto.PolicyDetailsDto;
+import com.lti.entity1.Claim;
 import com.lti.entity1.Customer;
 import com.lti.entity1.Policy;
 import com.lti.exception.CustomerServiceException;
@@ -26,16 +29,20 @@ public class RenewalService implements RenewalInterface{
 	
 	private PolicyRepository policyRepository;
 	
-	public Policy renewOldPolicy(int pid, String number, String type, String period) {
+	public PolicyDetailsDto renewOldPolicy(int pid, String number, String type, String period) {
 		
 		try {
 			Policy policy =(Policy) renewalRepository.find(Policy.class, pid);
 			
+			PolicyDetailsDto policyDetailsDto= new PolicyDetailsDto();
+			
+			LocalDate previousEndDate=renewalRepository.fetchEndDateOfPolicy(pid);
+			
 			LocalDate registerationVehicleDate= renewalRepository.fetchVehicleRegistartionDate(pid,number,type, period);
-			long ageOfVehicle = ChronoUnit.MONTHS.between(registerationVehicleDate, LocalDate.now());
+			long ageOfVehicle = ChronoUnit.MONTHS.between(registerationVehicleDate, previousEndDate);
 			int priceOfTheVehicle = renewalRepository.fetchVehiclePrice(pid, number, type, period);
 			
-			LocalDate  startDateOfRenewPolicy=renewalRepository.fetchEndDateOfPolicy(pid);
+			LocalDate  startDateOfRenewPolicy=previousEndDate;
 			
 			double idv=0;
 			double totalIdv=0;
@@ -136,14 +143,15 @@ public class RenewalService implements RenewalInterface{
 					 }
 				}	
 				
-				policy.setEachYearIdv(idv);
-				policy.setTotalIdv(totalIdv);
-				policy.setPolicyStartDate(startDateOfRenewPolicy);
-				policy.setPolicyEndDate(endDateOfRenewPolicy);
-				policy.setPremium(preminum);
+				policyDetailsDto.setEachYearIdv(idv);
+				policyDetailsDto.setTotalIdv(totalIdv);
+				policyDetailsDto.setPolicyType(type);
+				policyDetailsDto.setStartDate(startDateOfRenewPolicy);
+				policyDetailsDto.setEndDate(endDateOfRenewPolicy);
+				policyDetailsDto.setPremium(preminum);
 				
-				Policy updatedPolicy=(Policy) renewalRepository.save(policy);
-				return updatedPolicy;	
+				PolicyDetailsDto updatedPolicyDetails=(PolicyDetailsDto) renewalRepository.save(policyDetailsDto);
+				return updatedPolicyDetails;	
 			}
 			
 			else if(type.equals("Third Party")) {
@@ -252,18 +260,19 @@ public class RenewalService implements RenewalInterface{
 					 }
 				}	
 				
-				policy.setEachYearIdv(idv);
-				policy.setTotalIdv(totalIdv);
-				policy.setPolicyStartDate(startDateOfRenewPolicy);
-				policy.setPolicyEndDate(endDateOfRenewPolicy);
-				policy.setPremium(preminum);
+				policyDetailsDto.setEachYearIdv(idv);
+				policyDetailsDto.setTotalIdv(totalIdv);
+				policyDetailsDto.setPolicyType(type);
+				policyDetailsDto.setStartDate(startDateOfRenewPolicy);
+				policyDetailsDto.setEndDate(endDateOfRenewPolicy);
+				policyDetailsDto.setPremium(preminum);
 				
-				Policy updatedPolicy=(Policy) renewalRepository.save(policy);
-				return updatedPolicy;
+				PolicyDetailsDto updatedPolicyDetails=(PolicyDetailsDto) renewalRepository.save(policyDetailsDto);
+				return updatedPolicyDetails;	
 				
 			}
 			else{
-				return policy;
+				return null;
 			}		
 		}
 		catch(EmptyResultDataAccessException e) {
@@ -284,5 +293,23 @@ public class RenewalService implements RenewalInterface{
 			throw new RenewalServiceException("Invalid policy number");
 		}
 	}
+	// 	int id =renewalService.saveRenewalPolicy(policy.getId(), policy.getEachYearIdv(),policy.getPremium(),policy.getTotalIdv(),policy.getPolicyStartDate(),policy.getPolicyEndDate(),policy.getPeriod(),policy.getType());
+	public int saveRenewalPolicy(int id, double eachYearIdv, double premium, double totalIdv,LocalDate startDate ,  LocalDate endDate,  String period ,String type  ) {
+		Policy policy =(Policy)renewalRepository.find(Policy.class, id);
+		
+		policy.setEachYearIdv(eachYearIdv);
+		policy.setTotalIdv(totalIdv);
+		policy.setPolicyEndDate(endDate);
+		policy.setPolicyStartDate(startDate);
+		policy.setPremium(premium);
+		policy.setPeriod(period);
+		policy.setType(type);
+		
+		Policy updatedPolicy=(Policy)renewalRepository.save(policy);
+		return updatedPolicy.getId();
+		
+	}
+	
+	
 
 }

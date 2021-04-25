@@ -1,8 +1,11 @@
 package com.lti.repository;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
+
+import com.lti.entity1.Policy;
 
 @Repository
 public class RenewalRepository extends GenericRepository{
@@ -14,6 +17,7 @@ public class RenewalRepository extends GenericRepository{
 				.setParameter("pid", id)
 				.getSingleResult();
 	}
+
 	
 	public LocalDate fetchEndDateOfPolicy(int pid) {
 		return (LocalDate)
@@ -32,7 +36,6 @@ public class RenewalRepository extends GenericRepository{
     }
 	
 	
-	
 	public LocalDate fetchVehicleRegistartionDate(int pid, String number, String type, String period) {
 		return (LocalDate)
 				entityManager
@@ -48,6 +51,9 @@ public class RenewalRepository extends GenericRepository{
 				.setParameter("vnumber", number)
 				.getSingleResult();
 	}
+	
+	
+	
 	
 	
 	

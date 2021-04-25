@@ -1,12 +1,15 @@
 package com.lti.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.lti.dto.FinalRenewalStatus;
+import com.lti.dto.PolicyDetailsDto;
 import com.lti.dto.Renewal;
 import com.lti.dto.RenewalBuyPolicy;
 import com.lti.dto.RenewalStatus;
@@ -43,11 +46,16 @@ public class RenewalController {
 	@PostMapping("/renewalpolicy")
 	public RenewalStatus renewPolicy(@RequestBody RenewalBuyPolicy renewalBuyPolicy) {
 		try {
-		Policy Policy = renewalService.renewOldPolicy(renewalBuyPolicy.getPid(),renewalBuyPolicy.getNumber(), renewalBuyPolicy.getType(), renewalBuyPolicy.getPeriod());
+		PolicyDetailsDto policyDetailsDto = renewalService.renewOldPolicy(renewalBuyPolicy.getPid(),renewalBuyPolicy.getNumber(), renewalBuyPolicy.getType(), renewalBuyPolicy.getPeriod());
 			RenewalStatus renewalStatus = new RenewalStatus();
-			renewalStatus.setStatus(true);
-			renewalStatus.setMessage("Your Policy has been renewed successfully");
-			renewalStatus.setPolicyId(renewalBuyPolicy.getPid());
+			
+		    renewalStatus.setEndDate(policyDetailsDto.getEndDate());
+		    renewalStatus.setStartDate(policyDetailsDto.getStartDate());
+		    renewalStatus.setPremium(policyDetailsDto.getPremium());
+		    renewalStatus.setIdv(policyDetailsDto.getEachYearIdv());
+		    renewalStatus.setTotalIdv(policyDetailsDto.getTotalIdv());
+		    renewalStatus.setType(policyDetailsDto.getPolicyType());
+		    
 			return renewalStatus;
 		}
 		catch(RenewalServiceException e) {
@@ -55,8 +63,26 @@ public class RenewalController {
 			renewalStatus.setStatus(false);
 			renewalStatus.setMessage(e.getMessage());		
 			return renewalStatus;
-		} 
-		
+		} 	
+	} 
 	
+	@PostMapping("/renewalPayment")
+	public FinalRenewalStatus FinalRenewPolicy(@RequestBody Policy policy ) {
+		try {
+			int id =renewalService.saveRenewalPolicy(policy.getId(), policy.getEachYearIdv(),policy.getPremium(),policy.getTotalIdv(),policy.getPolicyStartDate(),policy.getPolicyEndDate(),policy.getPeriod(),policy.getType());
+			FinalRenewalStatus finalRenewalStatus = new FinalRenewalStatus();
+			
+			finalRenewalStatus.setId(id);
+			finalRenewalStatus.setStatus(true);
+			finalRenewalStatus.setMessage("renewal success");
+			return finalRenewalStatus;
+		}
+		catch(RenewalServiceException e) {
+            FinalRenewalStatus finalRenewalStatus = new FinalRenewalStatus();
+			finalRenewalStatus.setStatus(false);	
+			return finalRenewalStatus;
+		} 	
 	}
+	
+	
 }
