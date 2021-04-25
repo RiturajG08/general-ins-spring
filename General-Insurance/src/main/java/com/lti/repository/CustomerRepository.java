@@ -21,4 +21,12 @@ public class CustomerRepository extends GenericRepository {
 				.setParameter("pw", password)
 				.getSingleResult();
 	}
+	
+	public String fetchEmail(String email) {
+		return (String)
+				entityManager
+				.createQuery("select c.email from Customer c where c.email= :cemail")
+				.setParameter("cemail", email)
+				.getSingleResult();
+	}
 }

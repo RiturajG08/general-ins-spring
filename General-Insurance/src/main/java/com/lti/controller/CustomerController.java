@@ -12,6 +12,7 @@ import com.lti.dto.RegisterStatus;
 import com.lti.entity1.Customer;
 import com.lti.exception.CustomerServiceException;
 import com.lti.service.CustomerService;
+import com.lti.service.EmailService;
 
 @RestController
 @CrossOrigin
@@ -20,10 +21,14 @@ public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
 	
+	@Autowired
+	private EmailService emailService;
+	
 	@PostMapping("/register")
 	public RegisterStatus register(@RequestBody Customer customer ) {
 		try {
 			int id= customerService.register(customer);
+			//emailService.sendEmailForNewRegistration(customer.getEmail(), "Weclcome", "welcome");
 			RegisterStatus status= new RegisterStatus();
 			status.setStatus(true);
 			status.setMessage("Registration Successfull");

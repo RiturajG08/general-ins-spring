@@ -14,6 +14,7 @@ import com.lti.dto.ClaimStatus;
 import com.lti.entity1.Claim;
 import com.lti.service.ClaimService;
 import com.lti.service.CustomerService;
+import com.lti.service.EmailService;
 
 @RestController
 @CrossOrigin
@@ -21,6 +22,7 @@ public class ClaimController {
 	
 	@Autowired
 	private ClaimService claimService;
+	
 	
 	@PostMapping("/claim")
 	public ClaimStatus addClaim(@RequestBody ClaimDto claimDto) {
@@ -37,5 +39,6 @@ public class ClaimController {
 	public List<Claim> getAllClaims() {
 		return claimService.searchClaims();
 	}
-
+	
+	
 }

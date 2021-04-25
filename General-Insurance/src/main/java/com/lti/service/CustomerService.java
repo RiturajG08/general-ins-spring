@@ -21,6 +21,9 @@ public class CustomerService implements CustomerInterface {
 	@Autowired
 	private CustomerRepository customerRepository;
 	
+	@Autowired
+	private EmailService emailService;
+	
 	public int register(Customer customer) {
 		if(customerRepository.isCustomerPresent(customer.getEmail())) {
 			throw new CustomerServiceException("customer already registered !");
@@ -32,10 +35,13 @@ public class CustomerService implements CustomerInterface {
 		}
 	}
 	
+	
 	public Customer login(String email, String password) {
 		try {
 			password= Base64.getEncoder().encodeToString(password.getBytes());
 			int id= customerRepository.fetchByEmailAndPassword(email, password);
+			String e=customerRepository.fetchEmail(email);
+			emailService.sendEmailForNewRegistration(e, "LTI Insurance Company", "Welcome To Our Website");
 			Customer customer= customerRepository.find(Customer.class, id);
 			return customer;
 		}
