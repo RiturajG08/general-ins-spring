@@ -11,7 +11,7 @@ import java.util.List;
 public class ClaimRepository extends GenericRepository {
 	
 	public List<Claim> searchAllClaims() {
-		return entityManager.createQuery("select cl.id, cl.claimDate, cl.reason from Claim cl")
+		return entityManager.createQuery("select cl.id, cl.claimDate, cl.reason, cl.status from Claim cl")
 				.getResultList();			
 	}
 }
