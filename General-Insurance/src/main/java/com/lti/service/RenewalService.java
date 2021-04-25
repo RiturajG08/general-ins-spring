@@ -299,11 +299,26 @@ public class RenewalService implements RenewalInterface{
 		
 		policy.setEachYearIdv(eachYearIdv);
 		policy.setTotalIdv(totalIdv);
-		policy.setPolicyEndDate(endDate);
-		policy.setPolicyStartDate(startDate);
+		LocalDate startDateRenew=renewalRepository.fetchEndDateOfPolicy(id);
+		policy.setPolicyStartDate(startDateRenew);
 		policy.setPremium(premium);
 		policy.setPeriod(period);
 		policy.setType(type);
+		
+		LocalDate endDateRenew;
+		if(period.equals("One Year")) {
+			endDateRenew=startDateRenew.plusYears(1);
+			policy.setPolicyEndDate(endDateRenew);
+		}
+		if(period.equals("Three Year")) {
+			endDateRenew=startDateRenew.plusYears(3);
+			policy.setPolicyEndDate(endDateRenew);
+		}
+        if(period.equals("Five Year")) {
+        	endDateRenew=startDateRenew.plusYears(5);
+			policy.setPolicyEndDate(endDateRenew);
+		}
+		
 		
 		Policy updatedPolicy=(Policy)renewalRepository.save(policy);
 		return updatedPolicy.getId();
