@@ -278,11 +278,9 @@ public class RenewalService implements RenewalInterface{
 		catch(EmptyResultDataAccessException e) {
 			throw new RenewalServiceException("Invalid Vehicle number");
 		}
-	    
-			
+	    			
 	} 
 			
-
 	public Policy checkPolicyNumber(int id) {
 		try {
 			int pid= renewalRepository.fetchByPolicyId(id);
@@ -293,7 +291,7 @@ public class RenewalService implements RenewalInterface{
 			throw new RenewalServiceException("Invalid policy number");
 		}
 	}
-	// 	int id =renewalService.saveRenewalPolicy(policy.getId(), policy.getEachYearIdv(),policy.getPremium(),policy.getTotalIdv(),policy.getPolicyStartDate(),policy.getPolicyEndDate(),policy.getPeriod(),policy.getType());
+	
 	public int saveRenewalPolicy(int id, double eachYearIdv, double premium, double totalIdv,  String period ,String type  ) {
 		Policy policy =(Policy)renewalRepository.find(Policy.class, id);
 		
@@ -307,24 +305,18 @@ public class RenewalService implements RenewalInterface{
 		
 		LocalDate endDateRenew = null;
 		if(period.equals("One Year")) {
-			endDateRenew=startDateRenew.plusYears(1);
-			//policy.setPolicyEndDate(endDateRenew);
+			endDateRenew=startDateRenew.plusYears(1);	
 		}
 		else if(period.equals("Three Year")) {
 			endDateRenew=startDateRenew.plusYears(3);
-		//	policy.setPolicyEndDate(endDateRenew);
 		}
 		else if(period.equals("Five Year")) {
         	endDateRenew=startDateRenew.plusYears(5);
-			//policy.setPolicyEndDate(endDateRenew);
 		}
 		
 		policy.setPolicyEndDate(endDateRenew);
 		Policy updatedPolicy=(Policy)renewalRepository.save(policy);
-		return updatedPolicy.getId();
-		
+		return updatedPolicy.getId();	
 	}
 	
-	
-
 }

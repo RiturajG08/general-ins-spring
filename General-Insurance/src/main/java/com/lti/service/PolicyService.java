@@ -21,8 +21,8 @@ public class PolicyService implements PolicyInterface {
 	@Autowired
 	private PolicyRepository policyRepository;
 	
-
 	public int addPolicyToVehicle(Policy policy) {
+		
 		LocalDate startDate= LocalDate.now();
 		policy.setPolicyStartDate(startDate);
 		LocalDate endDate;
@@ -40,6 +40,5 @@ public class PolicyService implements PolicyInterface {
 		Policy updatedPolicy= (Policy) policyRepository.save(policy);
 		return updatedPolicy.getId();
 	}
-	
-	
+		
 }

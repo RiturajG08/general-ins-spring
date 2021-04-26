@@ -11,7 +11,6 @@ import com.lti.entity1.Policy;
 import com.lti.entity1.Vehicle;
 import com.lti.repository.PolicyDetailsRepository;
 
-
 @Service
 @Transactional
 public class PolicyDetailsService implements PolicyDetailsInterface {
@@ -59,7 +58,6 @@ public class PolicyDetailsService implements PolicyDetailsInterface {
 			return updatedPolicyDetailsDto;
 		}
 		else if(type.equals("Third Party")) {
-			
 			double eachYearIdv=  policyDetailsRepository.calculateIdv(cid, did, vid, period, type);
 			double premium=0;
 			double totalIdv=0;

@@ -13,6 +13,7 @@ public class PolicyHelperDto {
 	private double premium;
 	private double eachYearIdv;
 	private double totalIdv;
+	
 	public int getCid() {
 		return cid;
 	}
@@ -67,7 +68,5 @@ public class PolicyHelperDto {
 	public void setTotalIdv(double totalIdv) {
 		this.totalIdv = totalIdv;
 	}
-	
-	
-	
+		
 }

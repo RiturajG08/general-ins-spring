@@ -11,7 +11,5 @@ public class RegisterStatus extends Status {
 	public void setRegisteredCustomerId(int registeredCustomerId) {
 		this.registeredCustomerId = registeredCustomerId;
 	}
-	
-	
-	
+
 }

@@ -17,4 +17,5 @@ public class RejectClaim{
 	public void setRejectionReason(String rejectionReason) {
 		this.rejectionReason = rejectionReason;
 	}
+	
 }

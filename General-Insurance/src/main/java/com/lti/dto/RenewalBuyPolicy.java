@@ -3,12 +3,9 @@ package com.lti.dto;
 public class RenewalBuyPolicy {
 
 	private String number;
-	
-	 private String period;
-	 
-	 private int pid;
-	 
-	 private String type;
+	private String period;
+	private int pid;
+	private String type;
 
 	public String getType() {
 		return type;
@@ -41,4 +38,5 @@ public class RenewalBuyPolicy {
 	public void setPeriod(String period) {
 		this.period = period;
 	}
+	
 }

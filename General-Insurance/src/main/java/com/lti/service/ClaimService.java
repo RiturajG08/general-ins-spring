@@ -16,7 +16,7 @@ import com.lti.repository.ClaimRepository;
 
 @Service
 @Transactional
-public class ClaimService {
+public class ClaimService implements ClaimInterface{
 	
 	@Autowired
 	private ClaimRepository claimRepository;
@@ -29,18 +29,18 @@ public class ClaimService {
 		claim.setReason(reason);
 		claim.setPolicy(policy);
 		claim.setStatus("Waiting");
+		
 		Claim updatedClaim = (Claim) claimRepository.save(claim);
 		return updatedClaim.getId();
-		}
+	}
 	
 	public List<Claim> searchClaims() {
-		return claimRepository.searchAllClaims();
-		
+		return claimRepository.searchAllClaims();	
 	}
 	
 	public List<Claim> viewClaim(int id) {
 		int claimid = claimRepository.isClaimPresent(id);
-		return claimRepository.viewUserClaim(claimid);		
-		
+		return claimRepository.viewUserClaim(claimid);			
 	}
+	
 }

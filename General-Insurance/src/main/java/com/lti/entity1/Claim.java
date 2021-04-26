@@ -21,25 +21,14 @@ public class Claim {
 	@SequenceGenerator(sequenceName="claim_seq", allocationSize=1, name="my_sequence")
 	private int id;
 	
-	
-	
 	@Column(name="claim_date")
 	private LocalDate claimDate;
-	
 	
 	private int amount;
 	private String reason;
 	private String status;
 	private String rejectionReason;
 	
-	public String getRejectionReason() {
-		return rejectionReason;
-	}
-
-	public void setRejectionReason(String rejectionReason) {
-		this.rejectionReason = rejectionReason;
-	}
-
 	@Column(name ="incident_photo")
 	private String incidentPhoto;
 	
@@ -102,6 +91,13 @@ public class Claim {
 	public void setIncidentPhoto(String incidentPhoto) {
 		this.incidentPhoto = incidentPhoto;
 	}
+	
+	public String getRejectionReason() {
+		return rejectionReason;
+	}
 
+	public void setRejectionReason(String rejectionReason) {
+		this.rejectionReason = rejectionReason;
+	}
 	
 }

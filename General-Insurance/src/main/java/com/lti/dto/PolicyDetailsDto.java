@@ -19,9 +19,6 @@ public class PolicyDetailsDto {
 	private double premium;
 	private String period;
 	
-	
-	
-	
 	public String getPeriod() {
 		return period;
 	}
@@ -72,5 +69,4 @@ public class PolicyDetailsDto {
 		this.endDate = endDate;
 	}
 	
-
 }

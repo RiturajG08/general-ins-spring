@@ -17,14 +17,4 @@ public class DepreciationController {
 	@Autowired
 	private DepreciationService depreciationService;
 	
-	/*
-	@PostMapping("/depreciation")
-	public DepreciationStatus addDepreciation(@RequestBody DepreciationDto depreciationDto ) {
-			int depId= depreciationService.addDepreciationToVehicle(depreciationDto.getId());
-			DepreciationStatus status= new DepreciationStatus();
-			status.setStatus(true);
-			status.setMessage("depreciation added sucessfully!");
-			status.setDepreciationId(depId);
-			return status;
-}*/
 }

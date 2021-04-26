@@ -11,4 +11,5 @@ public class ClaimStatus extends Status {
 	public void setClaimId(int claimId) {
 		this.claimId = claimId;
 	}
+	
 }

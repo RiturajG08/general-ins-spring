@@ -35,7 +35,6 @@ public class Policy {
 	private LocalDate policyEndDate;
 	
 	private String period;
-	
 	private double premium;
 	
 	@Column(name="each_year_idv")

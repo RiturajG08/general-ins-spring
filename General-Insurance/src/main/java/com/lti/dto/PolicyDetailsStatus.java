@@ -13,8 +13,6 @@ public class PolicyDetailsStatus extends Status {
 	private String type;
 	private String period;
 	
-	
-	
 	public String getPeriod() {
 		return period;
 	}

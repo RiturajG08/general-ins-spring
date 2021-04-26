@@ -23,7 +23,6 @@ public class ClaimController {
 	@Autowired
 	private ClaimService claimService;
 	
-	
 	@PostMapping("/claim")
 	public ClaimStatus addClaim(@RequestBody ClaimDto claimDto) {
 		

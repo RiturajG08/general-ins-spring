@@ -20,4 +20,5 @@ public class LoginStatus extends Status {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 }

@@ -18,7 +18,6 @@ public class RenewalRepository extends GenericRepository{
 				.getSingleResult();
 	}
 
-	
 	public LocalDate fetchEndDateOfPolicy(int pid) {
 		return (LocalDate)
 				entityManager
@@ -35,7 +34,6 @@ public class RenewalRepository extends GenericRepository{
 				.getSingleResult();
     }
 	
-	
 	public LocalDate fetchVehicleRegistartionDate(int pid, String number, String type, String period) {
 		return (LocalDate)
 				entityManager
@@ -51,12 +49,5 @@ public class RenewalRepository extends GenericRepository{
 				.setParameter("vnumber", number)
 				.getSingleResult();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+		
 }

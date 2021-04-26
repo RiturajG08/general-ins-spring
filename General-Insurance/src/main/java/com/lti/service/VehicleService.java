@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.lti.dto.DepreciationDetails;
 import com.lti.entity1.Depreciation;
 import com.lti.entity1.Vehicle;
 import com.lti.exception.VehicleServiceException;
@@ -30,12 +29,10 @@ public class VehicleService implements VehicleInterface {
 		}
 		Vehicle updatedVehicle= (Vehicle) vehicleRepository.save(vehicle);
 		return updatedVehicle;
-		}
-	
-	   //int d=depreciationService.addDepreciationToVehicle(id);
+	}
 	
 	public Depreciation add(int id) {
 		Depreciation depreciation=depreciationService.addDepreciationToVehicle(id);
 		return depreciation;
 	}
-	}
+}

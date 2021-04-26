@@ -5,12 +5,8 @@ public class VehicleStatus extends Status{
 	private int did;
 	private int registerVehicleId;
 	private String vehicleNumber;
-	
-	
 	private double idv;
 	private double depreciationAmount;
-
-	
 
 	public int getRegisterVehicleId() {
 		return registerVehicleId;
@@ -20,7 +16,6 @@ public class VehicleStatus extends Status{
 		this.registerVehicleId = registerVehicleId;
 	}
 
-	
 	public String getVehicleNumber() {
 		return vehicleNumber;
 	}
@@ -52,6 +47,5 @@ public class VehicleStatus extends Status{
 	public void setDid(int did) {
 		this.did = did;
 	}
-	
-	
+		
 }

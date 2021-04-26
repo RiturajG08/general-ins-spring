@@ -28,12 +28,10 @@ public class Depreciation {
 	@Column(name="depreciation_amount")
 	private double depreciationAmount;
 	
-	
 	@OneToOne
 	@JoinColumn(name="vehicle_id")
 	private Vehicle vehicle;
 
-	
 	public int getId() {
 		return id;
 	}
@@ -49,8 +47,6 @@ public class Depreciation {
 	public void setVehicleAge(long vehicleAge) {
 		this.vehicleAge = vehicleAge;
 	}
-
-	
 
 	public double getIdv() {
 		return idv;
@@ -75,7 +71,5 @@ public class Depreciation {
 	public void setVehicle(Vehicle vehicle) {
 		this.vehicle = vehicle;
 	}
-	
-	
-	
+		
 }

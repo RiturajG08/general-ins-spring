@@ -7,12 +7,9 @@ public class PolicyDto{
 	private int cid;
 	private int vid;
 	private int did;
-	
 	private String type;
 	private LocalDate startDate;
 	private String period;
-	
-	
 	
 	public int getCid() {
 		return cid;
@@ -50,6 +47,5 @@ public class PolicyDto{
 	public void setPeriod(String period) {
 		this.period = period;
 	}
-	
-	
+		
 }

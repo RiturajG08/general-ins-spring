@@ -10,7 +10,7 @@ import com.lti.repository.AdminRepository;
 
 @Service
 @Transactional
-public class AdminService {
+public class AdminService implements AdminInterface{
 	
 	@Autowired
 	private AdminRepository adminRepository;
@@ -26,11 +26,13 @@ public class AdminService {
 	}
 	
 	public Claim rejectClaim(int rcid, String rejectionReason) {
+		
 		Claim claim = (Claim) adminRepository.fetchClaimById(rcid);
 		claim.setStatus("Rejected");
 		claim.setRejectionReason(rejectionReason);
-		Claim updatedClaim = (Claim) adminRepository.save(claim);
-		return updatedClaim;
 		
+		Claim updatedClaim = (Claim) adminRepository.save(claim);
+		return updatedClaim;	
 	}
+	
 }

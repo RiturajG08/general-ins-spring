@@ -13,7 +13,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name="customer_tbl")
 public class Customer {
@@ -141,6 +140,4 @@ public class Customer {
 		this.policies = policies;
 	}
 
-	
-	
 }

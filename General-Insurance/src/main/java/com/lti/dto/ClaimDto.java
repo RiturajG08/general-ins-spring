@@ -21,4 +21,5 @@ public class ClaimDto {
 	public void setReason(String reason) {
 		this.reason = reason;
 	}
+	
 }

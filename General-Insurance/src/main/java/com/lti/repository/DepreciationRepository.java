@@ -20,9 +20,7 @@ public class DepreciationRepository extends GenericRepository {
 				entityManager
 				.createQuery("select v.registrationDate from Vehicle v where v.id= :vid")
 				.setParameter("vid", id)
-				.getSingleResult();
-		
-		
+				.getSingleResult();	
 	}
 	
 }

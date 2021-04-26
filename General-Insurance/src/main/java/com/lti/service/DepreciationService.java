@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.lti.dto.DepreciationDetails;
 import com.lti.dto.DepreciationStatus;
 import com.lti.entity1.Depreciation;
 import com.lti.entity1.Vehicle;
@@ -21,21 +20,17 @@ import java.time.temporal.ChronoUnit;
 @Transactional
 public class DepreciationService implements DepreciationInterface {
 	
-	
 	@Autowired
 	private DepreciationRepository depriciationRepo;
 	
 	public Depreciation addDepreciationToVehicle(int id) {
 		int price= depriciationRepo.fetchVehiclePrice(id);
 		
-		
 		LocalDate registrationDate= depriciationRepo.fetchVehicleAge(id);
 		LocalDate todayDate= LocalDate.now();
-		
 		long noOfMonthsBetween=0;
 		double depreciationPrice=0;
 		double idv = 0;
-		
         noOfMonthsBetween = ChronoUnit.MONTHS.between(registrationDate, todayDate);
 		
 		if(noOfMonthsBetween <= 12) {
@@ -61,7 +56,6 @@ public class DepreciationService implements DepreciationInterface {
 		}
 		
 		long age=(int) Math.ceil(noOfMonthsBetween/12);
-		
 		Vehicle vehicle= (Vehicle) depriciationRepo.find(Vehicle.class, id);
 		
 		Depreciation depreciation= new Depreciation();
@@ -69,6 +63,7 @@ public class DepreciationService implements DepreciationInterface {
 		depreciation.setVehicleAge(age);
 		depreciation.setIdv(idv);
 		depreciation.setVehicle(vehicle);
+		
 		Depreciation updatedDepreciation= (Depreciation) depriciationRepo.save(depreciation);
 		return updatedDepreciation;
 	}

@@ -21,11 +21,7 @@ public class PolicyRepository extends GenericRepository{
 				entityManager
 				.createQuery("select d.idv from Depreciation d where d.id= :did")
 				.setParameter("did", did)
-				.getSingleResult();
-		
-		
+				.getSingleResult();	
 	}
-	
-	
-	
+		
 }
