@@ -2,6 +2,7 @@ package com.lti.service;
 
 
 import java.util.Base64;
+import java.util.List;
 
 import javax.persistence.NoResultException;
 
@@ -10,7 +11,9 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.lti.entity1.Claim;
 import com.lti.entity1.Customer;
+import com.lti.entity1.Policy;
 import com.lti.exception.CustomerServiceException;
 import com.lti.repository.CustomerRepository;
 
@@ -49,4 +52,10 @@ public class CustomerService implements CustomerInterface {
 			throw new CustomerServiceException("Invalid Email/Password");
 		}
 	}
+	
+	public List<Policy> searchPolicy(int id){
+			return customerRepository.searchPolicyByCustomer(id);
+		
+	}
+	
 }

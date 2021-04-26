@@ -1,6 +1,11 @@
 package com.lti.repository;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
+
+import com.lti.entity1.Claim;
+import com.lti.entity1.Policy;
 
 @Repository
 public class CustomerRepository extends GenericRepository {
@@ -29,4 +34,12 @@ public class CustomerRepository extends GenericRepository {
 				.setParameter("cemail", email)
 				.getSingleResult();
 	}
+	
+	public List<Policy> searchPolicyByCustomer(int id) {
+		return entityManager.createQuery("select p.id, p.premium, p.policyStartDate, p.policyEndDate, p.type, p.eachYearIdv, p.totalIdv,p.period, p.vehicle.number from Policy p where p.customer.id=:cid")
+				.setParameter("cid", id)
+				.getResultList();			
+	}
+	
 }
+

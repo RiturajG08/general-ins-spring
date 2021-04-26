@@ -33,10 +33,14 @@ public class ClaimService {
 		return updatedClaim.getId();
 		}
 	
-	public List<Claim> searchClaims(){
+	public List<Claim> searchClaims() {
 		return claimRepository.searchAllClaims();
 		
 	}
 	
-	
+	public List<Claim> viewClaim(int id) {
+		int claimid = claimRepository.isClaimPresent(id);
+		return claimRepository.viewUserClaim(claimid);		
+		
+	}
 }

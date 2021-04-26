@@ -40,5 +40,9 @@ public class ClaimController {
 		return claimService.searchClaims();
 	}
 	
+	@GetMapping("/viewuserclaim")
+	public List<Claim> viewUserClaim(int id) {
+		return claimService.viewClaim(id);
+	}
 	
 }
