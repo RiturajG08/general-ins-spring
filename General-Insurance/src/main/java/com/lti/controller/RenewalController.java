@@ -55,6 +55,7 @@ public class RenewalController {
 		    renewalStatus.setIdv(policyDetailsDto.getEachYearIdv());
 		    renewalStatus.setTotalIdv(policyDetailsDto.getTotalIdv());
 		    renewalStatus.setType(policyDetailsDto.getPolicyType());
+		    renewalStatus.setPeriod(renewalBuyPolicy.getPeriod());
 		    
 			return renewalStatus;
 		}
@@ -69,7 +70,7 @@ public class RenewalController {
 	@PostMapping("/renewalPayment")
 	public FinalRenewalStatus FinalRenewPolicy(@RequestBody Policy policy ) {
 		try {
-			int id =renewalService.saveRenewalPolicy(policy.getId(), policy.getEachYearIdv(),policy.getPremium(),policy.getTotalIdv(),policy.getPolicyStartDate(),policy.getPolicyEndDate(),policy.getPeriod(),policy.getType());
+			int id =renewalService.saveRenewalPolicy(policy.getId(), policy.getEachYearIdv(),policy.getPremium(),policy.getTotalIdv(),policy.getPeriod(),policy.getType());
 			FinalRenewalStatus finalRenewalStatus = new FinalRenewalStatus();
 			
 			finalRenewalStatus.setId(id);

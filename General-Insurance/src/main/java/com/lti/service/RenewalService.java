@@ -294,7 +294,7 @@ public class RenewalService implements RenewalInterface{
 		}
 	}
 	// 	int id =renewalService.saveRenewalPolicy(policy.getId(), policy.getEachYearIdv(),policy.getPremium(),policy.getTotalIdv(),policy.getPolicyStartDate(),policy.getPolicyEndDate(),policy.getPeriod(),policy.getType());
-	public int saveRenewalPolicy(int id, double eachYearIdv, double premium, double totalIdv,LocalDate startDate ,  LocalDate endDate,  String period ,String type  ) {
+	public int saveRenewalPolicy(int id, double eachYearIdv, double premium, double totalIdv,  String period ,String type  ) {
 		Policy policy =(Policy)renewalRepository.find(Policy.class, id);
 		
 		policy.setEachYearIdv(eachYearIdv);
@@ -305,21 +305,21 @@ public class RenewalService implements RenewalInterface{
 		policy.setPeriod(period);
 		policy.setType(type);
 		
-		LocalDate endDateRenew;
+		LocalDate endDateRenew = null;
 		if(period.equals("One Year")) {
 			endDateRenew=startDateRenew.plusYears(1);
-			policy.setPolicyEndDate(endDateRenew);
+			//policy.setPolicyEndDate(endDateRenew);
 		}
-		if(period.equals("Three Year")) {
+		else if(period.equals("Three Year")) {
 			endDateRenew=startDateRenew.plusYears(3);
-			policy.setPolicyEndDate(endDateRenew);
+		//	policy.setPolicyEndDate(endDateRenew);
 		}
-        if(period.equals("Five Year")) {
+		else if(period.equals("Five Year")) {
         	endDateRenew=startDateRenew.plusYears(5);
-			policy.setPolicyEndDate(endDateRenew);
+			//policy.setPolicyEndDate(endDateRenew);
 		}
 		
-		
+		policy.setPolicyEndDate(endDateRenew);
 		Policy updatedPolicy=(Policy)renewalRepository.save(policy);
 		return updatedPolicy.getId();
 		
