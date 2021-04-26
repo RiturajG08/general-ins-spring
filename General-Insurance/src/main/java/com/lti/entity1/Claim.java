@@ -29,9 +29,6 @@ public class Claim {
 	private String status;
 	private String rejectionReason;
 	
-	@Column(name ="incident_photo")
-	private String incidentPhoto;
-	
 	@ManyToOne
 	@JoinColumn(name="policy_id")
 	private Policy policy;
@@ -82,14 +79,6 @@ public class Claim {
 
 	public void setPolicy(Policy policy) {
 		this.policy = policy;
-	}
-	
-	public String getIncidentPhoto() {
-		return incidentPhoto;
-	}
-
-	public void setIncidentPhoto(String incidentPhoto) {
-		this.incidentPhoto = incidentPhoto;
 	}
 	
 	public String getRejectionReason() {
