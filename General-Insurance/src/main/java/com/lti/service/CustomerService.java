@@ -40,8 +40,8 @@ public class CustomerService implements CustomerInterface {
 		try {
 			password= Base64.getEncoder().encodeToString(password.getBytes());
 			int id= customerRepository.fetchByEmailAndPassword(email, password);
-			String e=customerRepository.fetchEmail(email);
-			emailService.sendEmailForNewRegistration(e, "LTI Insurance Company", "Welcome To Our Website");
+		//	String e=customerRepository.fetchEmail(email);
+		//	emailService.sendEmailForNewRegistration(e, "LTI Insurance Company", "Welcome To Our Website");
 			Customer customer= customerRepository.find(Customer.class, id);
 			return customer;
 		}
